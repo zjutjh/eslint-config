@@ -1,10 +1,15 @@
 import { Linter } from "eslint";
-import { interopDefault } from "../utils";
+import { ensurePackages, interopDefault } from "../utils";
 import { Options } from "../types";
 
 export default async function vue(
   options?: Options
 ) {
+  await ensurePackages([
+    "eslint-plugin-vue",
+    "vue-eslint-parser"
+  ]);
+
   const [
     pluginVue,
     parserVue
