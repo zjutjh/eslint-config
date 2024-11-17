@@ -9,7 +9,7 @@
     "build": "tsup --format esm --clean --dts",
     "lint": "eslint --flag unstable_ts_config .",
     "dev": "config-inspector",
-    "release": "pnpm build && bumpp && pnpm publish"
+    "release": "pnpm build && bumpp && pnpm publish --access public"
   },
   "files": [
     "dist"
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.6",
+    "@stylistic/eslint-plugin": "^2.10.1",
     "@types/eslint__js": "^8.42.3",
     "bumpp": "^9.8.1",
     "eslint": "^9.15.0",
