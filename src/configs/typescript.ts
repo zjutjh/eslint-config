@@ -1,7 +1,10 @@
 import { Linter } from "eslint";
 import { interopDefault } from "../utils";
+import { OptionsOverrides } from "src/types";
 
-export default async function typescript() {
+export default async function typescript(
+  options: OptionsOverrides
+) {
   const [
     pluginTs,
     parserTs
@@ -44,7 +47,9 @@ export default async function typescript() {
           allowShortCircuit: true,
           allowTaggedTemplates: true,
           allowTernary: true
-        }]
+        }],
+
+        ...options.overrides
       }
     }
   ] as Linter.Config[];

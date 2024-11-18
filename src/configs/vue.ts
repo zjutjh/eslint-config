@@ -1,9 +1,9 @@
 import { Linter } from "eslint";
 import { ensurePackages, interopDefault } from "../utils";
-import { Options } from "../types";
+import { OptionsOverrides, OptionsVue } from "../types";
 
 export default async function vue(
-  options?: Options
+  options?: OptionsVue & OptionsOverrides
 ) {
   await ensurePackages([
     "eslint-plugin-vue",
@@ -50,7 +50,9 @@ export default async function vue(
         "vue/multi-word-component-names": "warn",
         "vue/component-name-in-template-casing": ["error", "kebab-case", { "registeredComponentsOnly": true }],
         "vue/max-attributes-per-line": ["error", { "singleline": { "max": 3 } }],
-        "vue/prefer-true-attribute-shorthand": ["warn", options?.taro ? "never" : "always"]
+        "vue/prefer-true-attribute-shorthand": ["warn", options?.taro ? "never" : "always"],
+
+        ...options?.overrides
       }
     }
   ] as Linter.Config[];

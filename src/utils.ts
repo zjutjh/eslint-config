@@ -1,4 +1,6 @@
 import { isPackageExists } from "local-pkg";
+import { OptionsConfig, OverridesConfigs } from "./types";
+import { Linter } from "eslint";
 
 type Awaitable<T> = T | Promise<T>;
 
@@ -14,4 +16,13 @@ export async function ensurePackages(packages: (string | undefined)[]): Promise<
     const message = `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}.`;
     throw new Error(message);
   }
+}
+
+export function getOverrides<K extends keyof OverridesConfigs>(
+  options: OptionsConfig,
+  key: K
+): Linter.RulesRecord {
+  return {
+    ...(options.overrides as any)?.[key]
+  };
 }

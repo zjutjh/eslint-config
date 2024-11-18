@@ -1,7 +1,10 @@
 import { Linter } from "eslint";
 import pluginStylistic from "@stylistic/eslint-plugin";
+import { OptionsOverrides } from "src/types";
 
-export default function stylistic() {
+export default function stylistic(
+  options: OptionsOverrides
+) {
 
   return [
     {
@@ -38,6 +41,8 @@ export default function stylistic() {
         "@stylistic/space-in-parens": "error",
         "@stylistic/space-infix-ops": "error",
         "@stylistic/spaced-comment": "error",
+
+        ...options.overrides
       }
     }
 
