@@ -11,11 +11,16 @@ zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 项目。
 > ESLint 版本需要 ^9.0.0 以上，Node 版本需要 ^18.18.0 以上
 
 ```sh
+# 确保你已经安装了 eslint
+$ pnpm add -D eslint
+
 $ pnpm add -D @zjutjh/eslint-config
 ```
 
 ```ts
 // @filename eslint.config.mjs
+import zjutjh from "@zjutjh/eslint-config";
+
 export default zjutjh();
 ```
 
@@ -33,7 +38,7 @@ export default [
 ```
 
 > [!TIP]
-> 在项目中使用调整配置时，如果对最终计算出的的配置有疑问，可以使用 [@eslint/config-inspector](https://github.com/eslint/config-inspector) 来调试配置。
+> 在项目中调整配置时，如果对最终计算出的的配置有疑问，可以使用 [@eslint/config-inspector](https://github.com/eslint/config-inspector) 来调试配置。
 
 ```ts
 // 覆盖原有配置
@@ -54,18 +59,28 @@ export default [
 > 在一个配置对象内，一条规则的生效需要声明出对应的插件。对于用户而言，在工厂函数 `zjutjh()` 之外声明规则，无法直接获知一条规则对应的插件是什么。
 > 所以函数开放了 `overrides` 入口来透传配置到内部的配置对象中。自定义的配置被带到合适插件的生效范围之下，并结合 JS 声明同名的对象属性来支持配置的覆盖。
 
-在项目中运行即可。如果有提示按照依赖，请按照提示出的包名安装。
+在 `package.json` 中添加如下命令。
 
+```json
+{
+  "scripts": {
+    "lint": "eslint"
+  }
+}
 ```
-npm run eslint
+
+在项目中运行即可。如果有提示按照依赖，请按照提示出的包名安装（应该安装到 `devDependencies`）。
+
+```sh
+$ npm run lint
 ```
 
 ## 开发指南
 
 推荐使用官方的 [@eslint/config-inspector](https://github.com/eslint/config-inspector) 来可视化调试配置。
 
-```
-npm run dev
+```sh
+$ npm run dev
 ```
 
 在 `src/configs` 目录下，分出了每个语言/依赖的配置，如果需要对现有配置修改或删除，找到对应的条目即可。
