@@ -21,22 +21,28 @@
   },
   "types": "./dist/index.d.ts",
   "peerDependencies": {
-    "eslint-plugin-vue": "^9.31.0",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "eslint-plugin-vue": "^9.32.0",
     "vue-eslint-parser": "^9.4.3"
   },
   "peerDependenciesMeta": {
+    "@typescript-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
+      "optional": true
+    },
     "eslint-plugin-vue": {
-      "optional": false
+      "optional": true
     },
     "vue-eslint-parser": {
-      "optional": false
+      "optional": true
     }
   },
   "dependencies": {
     "@eslint/js": "^9.19.0",
     "@stylistic/eslint-plugin": "^2.13.0",
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
-    "@typescript-eslint/parser": "^8.21.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0",
     "local-pkg": "^1.0.0"
@@ -45,6 +51,8 @@
     "@eslint/config-inspector": "^1.0.0",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.10.10",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
     "bumpp": "^9.10.2",
     "eslint": "^9.19.0",
     "eslint-plugin-vue": "^9.32.0",
