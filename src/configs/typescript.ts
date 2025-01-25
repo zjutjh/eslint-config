@@ -1,11 +1,16 @@
 import { Linter } from "eslint";
 import { OptionsOverrides } from "src/types";
 
-import { interopDefault } from "../utils";
+import { ensurePackages, interopDefault } from "../utils";
 
 export default async function typescript(
   options: OptionsOverrides
 ) {
+  await ensurePackages([
+    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser"
+  ]);
+
   const [
     pluginTs,
     parserTs
