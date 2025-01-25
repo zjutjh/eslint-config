@@ -15,6 +15,9 @@ zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 项目。
 $ pnpm add -D eslint
 
 $ pnpm add -D @zjutjh/eslint-config
+
+# 如果你想使用 ts 编写配置文件，还需要安装 jiti 来帮助 eslint 解析配置
+$ pnpm add -D jiti
 ```
 
 ```ts
