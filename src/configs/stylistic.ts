@@ -1,5 +1,5 @@
-import { Linter } from "eslint";
 import pluginStylistic from "@stylistic/eslint-plugin";
+import { Linter } from "eslint";
 import { OptionsOverrides } from "src/types";
 
 export default function stylistic(

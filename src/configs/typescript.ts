@@ -1,6 +1,7 @@
 import { Linter } from "eslint";
-import { interopDefault } from "../utils";
 import { OptionsOverrides } from "src/types";
+
+import { interopDefault } from "../utils";
 
 export default async function typescript(
   options: OptionsOverrides

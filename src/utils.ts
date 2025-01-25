@@ -1,6 +1,7 @@
-import { isPackageExists } from "local-pkg";
-import { OptionsConfig, OverridesConfigs } from "./types";
 import { Linter } from "eslint";
+import { isPackageExists } from "local-pkg";
+
+import { OptionsConfig, OverridesConfigs } from "./types";
 
 type Awaitable<T> = T | Promise<T>;
 

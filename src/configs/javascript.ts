@@ -1,5 +1,5 @@
-import { Linter } from "eslint";
 import eslintJS from "@eslint/js";
+import { Linter } from "eslint";
 import globals from "globals";
 
 export default function javascript() {

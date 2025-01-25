@@ -1,6 +1,7 @@
 import { Linter } from "eslint";
-import { ensurePackages, interopDefault } from "../utils";
+
 import { OptionsOverrides, OptionsVue } from "../types";
+import { ensurePackages, interopDefault } from "../utils";
 
 export default async function vue(
   options?: OptionsVue & OptionsOverrides
