@@ -8,7 +8,7 @@ zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 项目。
 ## 使用方式
 
 > [!IMPORTANT]
-> ESLint 版本需要 ^9.0.0 以上，Node 版本需要 ^18.18.0 以上
+> ESLint 版本需要 ^9.9.0 以上，Node 版本需要 ^18.18.0 以上
 
 ```sh
 # 确保你已经安装了 eslint
@@ -18,7 +18,7 @@ $ pnpm add -D @zjutjh/eslint-config
 ```
 
 ```ts
-// @filename eslint.config.mjs
+// @filename eslint.config.ts
 import zjutjh from "@zjutjh/eslint-config";
 
 export default zjutjh();
