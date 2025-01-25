@@ -1,10 +1,12 @@
 import { Linter } from "eslint";
+import { isPackageExists } from "local-pkg";
+
+import imports from "./configs/imports";
 import javascript from "./configs/javascript";
 import stylistic from "./configs/stylistic";
-import { isPackageExists } from "local-pkg";
+import typescript from "./configs/typescript";
 import vue from "./configs/vue";
 import { OptionsConfig } from "./types";
-import typescript from "./configs/typescript";
 import { getOverrides } from "./utils";
 
 export default async function zjutjh(options: OptionsConfig = {}) {
@@ -17,10 +19,10 @@ export default async function zjutjh(options: OptionsConfig = {}) {
   const configs: Linter.Config[][] = [];
 
   configs.push(javascript());
-
   configs.push(
     stylistic({ overrides: getOverrides(options, "stylistic") })
   );
+  configs.push(imports());
 
   if (enableTs) configs.push(
     await typescript({ overrides: getOverrides(options, "ts") })
