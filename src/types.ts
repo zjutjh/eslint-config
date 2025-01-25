@@ -4,7 +4,7 @@ export type OverridesConfigs = {
   vue?: Linter.RulesRecord,
   ts?: Linter.RulesRecord,
   stylistic?: Linter.RulesRecord,
-}
+};
 
 export type OptionsConfig = {
   vue?: boolean;
