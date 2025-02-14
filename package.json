@@ -8,6 +8,7 @@
   "scripts": {
     "build": "tsup --format esm --clean --dts",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "dev": "config-inspector",
     "release": "pnpm build && bumpp && pnpm publish --access public"
   },
