@@ -21,14 +21,17 @@
     }
   },
   "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
     "eslint-plugin-vue": "^9.32.0",
     "vue-eslint-parser": "^9.4.3"
-  },
-  "engines": {
-    "node": ">=18.18.0"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/eslint-plugin": {
