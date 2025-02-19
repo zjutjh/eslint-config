@@ -1,11 +1,16 @@
 import { Linter } from "eslint";
-import { OptionsOverrides } from "src/types";
+import { OptionsOverrides, OptionsTypeScriptParserOptions } from "src/types";
 
 import { ensurePackages, interopDefault } from "../utils";
 
 export default async function typescript(
-  options: OptionsOverrides
+  options: OptionsOverrides & OptionsTypeScriptParserOptions
 ) {
+  const {
+    overrides,
+    parserOptions
+  } = options;
+
   await ensurePackages([
     "@typescript-eslint/eslint-plugin",
     "@typescript-eslint/parser"
@@ -23,7 +28,7 @@ export default async function typescript(
     {
       name: "zjutjh/typescript/setup",
       plugins: {
-        "@typescript-eslint": pluginTs as any
+        "@typescript-eslint": pluginTs
       }
     },
     {
@@ -38,7 +43,8 @@ export default async function typescript(
             allowDefaultProject: ["./*.js"],
             defaultProject: "./tsconfig.json"
           },
-          tsconfigRootDir: process.cwd()
+          tsconfigRootDir: process.cwd(),
+          ...parserOptions
         }
       }
     },
@@ -55,7 +61,7 @@ export default async function typescript(
           allowTernary: true
         }],
 
-        ...options.overrides
+        ...overrides
       }
     }
   ] as Linter.Config[];

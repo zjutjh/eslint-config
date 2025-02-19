@@ -7,7 +7,7 @@ import stylistic from "./configs/stylistic";
 import typescript from "./configs/typescript";
 import vue from "./configs/vue";
 import { OptionsConfig } from "./types";
-import { getOverrides } from "./utils";
+import { getOverrides, resolveSubOptions } from "./utils";
 
 export default async function zjutjh(options: OptionsConfig = {}) {
   const {
@@ -24,14 +24,18 @@ export default async function zjutjh(options: OptionsConfig = {}) {
   );
   configs.push(imports());
 
+  const typescriptOptions = resolveSubOptions(options, "ts");
   if (enableTs) configs.push(
-    await typescript({ overrides: getOverrides(options, "ts") })
+    await typescript({
+      ...typescriptOptions,
+      overrides: getOverrides(options, "ts"),
+    })
   );
 
   if (enableVue) {
     configs.push(
       await vue({
-        ts: enableTs,
+        ts: !!enableTs,
         taro: enableTaro,
         overrides: getOverrides(options, "vue")
       })

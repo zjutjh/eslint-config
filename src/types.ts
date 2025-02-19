@@ -1,3 +1,4 @@
+import { ParserOptions } from "@typescript-eslint/parser";
 import { Linter } from "eslint";
 
 export type OverridesConfigs = {
@@ -8,7 +9,7 @@ export type OverridesConfigs = {
 
 export type OptionsConfig = {
   vue?: boolean;
-  ts?: boolean;
+  ts?: boolean | (OptionsOverrides & OptionsTypeScriptParserOptions)
   taro?: boolean;
   overrides?: OverridesConfigs;
 };
@@ -21,3 +22,7 @@ export type OptionsVue = {
   ts: boolean,
   taro: boolean
 };
+
+export interface OptionsTypeScriptParserOptions {
+  parserOptions?: Partial<ParserOptions>
+}

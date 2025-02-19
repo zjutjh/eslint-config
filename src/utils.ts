@@ -19,6 +19,19 @@ export async function ensurePackages(packages: (string | undefined)[]): Promise<
   }
 }
 
+export type ResolvedOptions<T> = T extends boolean
+  ? never
+  : NonNullable<T>;
+
+export function resolveSubOptions<K extends keyof OptionsConfig>(
+  options: OptionsConfig,
+  key: K
+): ResolvedOptions<OptionsConfig[K]> {
+  return typeof options[key] === "boolean"
+    ? {} as any
+    : options[key] || {};
+}
+
 export function getOverrides<K extends keyof OverridesConfigs>(
   options: OptionsConfig,
   key: K
