@@ -28,7 +28,7 @@ export default async function zjutjh(options: OptionsConfig = {}) {
   if (enableTs) configs.push(
     await typescript({
       ...typescriptOptions,
-      overrides: getOverrides(options, "ts"),
+      overrides: getOverrides(options, "ts")
     })
   );
 

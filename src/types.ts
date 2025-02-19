@@ -15,7 +15,7 @@ export type OptionsConfig = {
 };
 
 export type OptionsOverrides = {
-  overrides: Linter.RulesRecord
+  overrides?: Linter.RulesRecord
 };
 
 export type OptionsVue = {
