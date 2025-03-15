@@ -4,6 +4,7 @@
   "version": "0.4.0",
   "license": "ISC",
   "author": "zjutjh",
+  "packageManager": "pnpm@10.6.2",
   "description": "Eslint config used by zjutjh",
   "scripts": {
     "build": "tsup --format esm --clean --dts",
@@ -28,10 +29,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
-    "@typescript-eslint/parser": "^8.21.0",
-    "eslint-plugin-vue": "^9.32.0",
-    "vue-eslint-parser": "^9.4.3"
+    "@typescript-eslint/eslint-plugin": "catalog:peer",
+    "@typescript-eslint/parser": "catalog:peer",
+    "eslint-plugin-vue": "catalog:peer",
+    "vue-eslint-parser": "catalog:peer",
+    "eslint": "catalog:peer"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/eslint-plugin": {
@@ -48,23 +50,23 @@
     }
   },
   "dependencies": {
-    "@eslint/js": "^9.22.0",
-    "@stylistic/eslint-plugin": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "globals": "^16.0.0",
-    "local-pkg": "^1.1.1"
+    "@eslint/js": "catalog:prod",
+    "@stylistic/eslint-plugin": "catalog:prod",
+    "eslint-plugin-simple-import-sort": "catalog:prod",
+    "globals": "catalog:prod",
+    "local-pkg": "catalog:prod"
   },
   "devDependencies": {
-    "@eslint/config-inspector": "^1.0.2",
-    "@types/node": "^22.13.10",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "bumpp": "^10.1.0",
-    "eslint": "^9.22.0",
-    "eslint-plugin-vue": "^10.0.0",
-    "jiti": "^2.4.2",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.2",
-    "vue-eslint-parser": "^10.1.1"
+    "@eslint/config-inspector": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "@typescript-eslint/eslint-plugin": "catalog:peer",
+    "@typescript-eslint/parser": "catalog:peer",
+    "bumpp": "catalog:dev",
+    "eslint": "catalog:peer",
+    "eslint-plugin-vue": "catalog:peer",
+    "jiti": "catalog:dev",
+    "tsup": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vue-eslint-parser": "catalog:peer"
   }
 }

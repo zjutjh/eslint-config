@@ -1,0 +1,21 @@
+catalogs:
+  peer:
+    "@typescript-eslint/eslint-plugin": "^8.26.1"
+    "@typescript-eslint/parser": "^8.26.1"
+    "eslint-plugin-vue": "^10.0.0"
+    "vue-eslint-parser": "^10.1.1"
+    "eslint": "^9.9.0"
+  prod:
+    "@eslint/js": "^9.22.0"
+    "@stylistic/eslint-plugin": "^4.2.0"
+    "eslint-plugin-simple-import-sort": "^12.1.1"
+    "globals": "^16.0.0"
+    "local-pkg": "^1.1.1"
+  dev:
+    "@eslint/config-inspector": "^1.0.2"
+    "@types/node": "^22.13.10"
+    "bumpp": "^10.1.0"
+    "eslint": "^9.22.0"
+    "jiti": "^2.4.2"
+    "tsup": "^8.4.0"
+    "typescript": "^5.8.2"

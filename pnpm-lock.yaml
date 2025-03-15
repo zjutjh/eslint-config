@@ -4,58 +4,111 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  dev:
+    '@eslint/config-inspector':
+      specifier: ^1.0.2
+      version: 1.0.2
+    '@types/node':
+      specifier: ^22.13.10
+      version: 22.13.10
+    bumpp:
+      specifier: ^10.1.0
+      version: 10.1.0
+    jiti:
+      specifier: ^2.4.2
+      version: 2.4.2
+    tsup:
+      specifier: ^8.4.0
+      version: 8.4.0
+    typescript:
+      specifier: ^5.8.2
+      version: 5.8.2
+  peer:
+    '@typescript-eslint/eslint-plugin':
+      specifier: ^8.26.1
+      version: 8.26.1
+    '@typescript-eslint/parser':
+      specifier: ^8.26.1
+      version: 8.26.1
+    eslint:
+      specifier: ^9.9.0
+      version: 9.22.0
+    eslint-plugin-vue:
+      specifier: ^10.0.0
+      version: 10.0.0
+    vue-eslint-parser:
+      specifier: ^10.1.1
+      version: 10.1.1
+  prod:
+    '@eslint/js':
+      specifier: ^9.22.0
+      version: 9.22.0
+    '@stylistic/eslint-plugin':
+      specifier: ^4.2.0
+      version: 4.2.0
+    eslint-plugin-simple-import-sort:
+      specifier: ^12.1.1
+      version: 12.1.1
+    globals:
+      specifier: ^16.0.0
+      version: 16.0.0
+    local-pkg:
+      specifier: ^1.1.1
+      version: 1.1.1
+
 importers:
 
   .:
     dependencies:
       '@eslint/js':
-        specifier: ^9.22.0
+        specifier: catalog:prod
         version: 9.22.0
       '@stylistic/eslint-plugin':
-        specifier: ^4.2.0
+        specifier: catalog:prod
         version: 4.2.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       eslint-plugin-simple-import-sort:
-        specifier: ^12.1.1
+        specifier: catalog:prod
         version: 12.1.1(eslint@9.22.0(jiti@2.4.2))
       globals:
-        specifier: ^16.0.0
+        specifier: catalog:prod
         version: 16.0.0
       local-pkg:
-        specifier: ^1.1.1
+        specifier: catalog:prod
         version: 1.1.1
     devDependencies:
       '@eslint/config-inspector':
-        specifier: ^1.0.2
+        specifier: catalog:dev
         version: 1.0.2(eslint@9.22.0(jiti@2.4.2))
       '@types/node':
-        specifier: ^22.13.10
+        specifier: catalog:dev
         version: 22.13.10
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.26.1
+        specifier: catalog:peer
         version: 8.26.1(@typescript-eslint/parser@8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       '@typescript-eslint/parser':
-        specifier: ^8.26.1
+        specifier: catalog:peer
         version: 8.26.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       bumpp:
-        specifier: ^10.1.0
+        specifier: catalog:dev
         version: 10.1.0
       eslint:
-        specifier: ^9.22.0
+        specifier: catalog:peer
         version: 9.22.0(jiti@2.4.2)
       eslint-plugin-vue:
-        specifier: ^10.0.0
+        specifier: catalog:peer
         version: 10.0.0(eslint@9.22.0(jiti@2.4.2))(vue-eslint-parser@10.1.1(eslint@9.22.0(jiti@2.4.2)))
       jiti:
-        specifier: ^2.4.2
+        specifier: catalog:dev
         version: 2.4.2
       tsup:
-        specifier: ^8.4.0
+        specifier: catalog:dev
         version: 8.4.0(jiti@2.4.2)(typescript@5.8.2)(yaml@2.7.0)
       typescript:
-        specifier: ^5.8.2
+        specifier: catalog:dev
         version: 5.8.2
       vue-eslint-parser:
-        specifier: ^10.1.1
+        specifier: catalog:peer
         version: 10.1.1(eslint@9.22.0(jiti@2.4.2))
 
 packages:
@@ -688,10 +741,6 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       vue-eslint-parser: ^10.0.0
 
-  eslint-scope@8.2.0:
-    resolution: {integrity: sha512-PHlWUfG6lvPc3yvP5A4PNyBL1W8fkDUccmI21JUu/+GKZBoH/W5u6usENXUrWFRsyoW5ACUjFGgAFQp5gUlb/A==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   eslint-scope@8.3.0:
     resolution: {integrity: sha512-pUNxi75F8MJ/GdeKtVLSbYg4ZI34J6C0C7sbL4YOp2exGwen7ZsuBqKzUhXd0qMQ362yET3z+uPwKeg/0C2XCQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -1053,9 +1102,6 @@ packages:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
 
-  pathe@2.0.2:
-    resolution: {integrity: sha512-15Ztpk+nov8DR524R4BF7uEuzESgzUEAV4Ah7CUMNGXdE5ELuvxElxGXndBl32vMSsWa1jpNf22Z+Er3sKwq+w==}
-
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
@@ -1152,11 +1198,6 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
-
-  semver@7.6.3:
-    resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
-    engines: {node: '>=10'}
-    hasBin: true
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
@@ -1689,7 +1730,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.3
+      semver: 7.7.1
       ts-api-utils: 2.0.1(typescript@5.8.2)
       typescript: 5.8.2
     transitivePeerDependencies:
@@ -1916,14 +1957,9 @@ snapshots:
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.1.2
-      semver: 7.6.3
+      semver: 7.7.1
       vue-eslint-parser: 10.1.1(eslint@9.22.0(jiti@2.4.2))
       xml-name-validator: 4.0.0
-
-  eslint-scope@8.2.0:
-    dependencies:
-      esrecurse: 4.3.0
-      estraverse: 5.3.0
 
   eslint-scope@8.3.0:
     dependencies:
@@ -2212,7 +2248,7 @@ snapshots:
   mlly@1.7.4:
     dependencies:
       acorn: 8.14.0
-      pathe: 2.0.2
+      pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.5.4
 
@@ -2299,8 +2335,6 @@ snapshots:
       lru-cache: 10.4.3
       minipass: 7.1.2
 
-  pathe@2.0.2: {}
-
   pathe@2.0.3: {}
 
   perfect-debounce@1.0.0: {}
@@ -2317,7 +2351,7 @@ snapshots:
     dependencies:
       confbox: 0.1.8
       mlly: 1.7.4
-      pathe: 2.0.2
+      pathe: 2.0.3
 
   pkg-types@2.1.0:
     dependencies:
@@ -2390,8 +2424,6 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
-
-  semver@7.6.3: {}
 
   semver@7.7.1: {}
 
@@ -2524,12 +2556,12 @@ snapshots:
     dependencies:
       debug: 4.4.0
       eslint: 9.22.0(jiti@2.4.2)
-      eslint-scope: 8.2.0
+      eslint-scope: 8.3.0
       eslint-visitor-keys: 4.2.0
       espree: 10.3.0
       esquery: 1.6.0
       lodash: 4.17.21
-      semver: 7.6.3
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
 
