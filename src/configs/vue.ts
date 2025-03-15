@@ -44,9 +44,9 @@ export default async function vue(
       },
       processor: pluginVue.processors[".vue"],
       rules: {
-        ...pluginVue.configs["vue3-recommended"].rules,
-        ...pluginVue.configs["vue3-essential"].rules,
-        ...pluginVue.configs["vue3-strongly-recommended"].rules,
+        ...pluginVue.configs["flat/recommended"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
+        ...pluginVue.configs["flat/essential"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
+        ...pluginVue.configs["flat/strongly-recommended"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
 
         "vue/multi-word-component-names": "warn",
         "vue/component-name-in-template-casing": ["error", "kebab-case", { "registeredComponentsOnly": true }],
