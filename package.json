@@ -13,9 +13,7 @@
     "dev": "config-inspector",
     "release": "pnpm build && bumpp && pnpm publish --access public"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "exports": {
     ".": {
       "import": "./dist/index.js"
@@ -33,7 +31,8 @@
     "@typescript-eslint/parser": "catalog:peer",
     "eslint-plugin-vue": "catalog:peer",
     "vue-eslint-parser": "catalog:peer",
-    "eslint": "catalog:peer"
+    "eslint": "catalog:peer",
+    "eslint-plugin-format": "catalog:peer"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/eslint-plugin": {
@@ -46,6 +45,9 @@
       "optional": true
     },
     "vue-eslint-parser": {
+      "optional": true
+    },
+    "eslint-plugin-format": {
       "optional": true
     }
   },
@@ -63,6 +65,7 @@
     "@typescript-eslint/parser": "catalog:peer",
     "bumpp": "catalog:dev",
     "eslint": "catalog:peer",
+    "eslint-plugin-format": "catalog:peer",
     "eslint-plugin-vue": "catalog:peer",
     "jiti": "catalog:dev",
     "tsup": "catalog:dev",

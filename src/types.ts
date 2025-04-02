@@ -11,6 +11,7 @@ export type OptionsConfig = {
   vue?: boolean;
   ts?: boolean | (OptionsOverrides & OptionsTypeScriptParserOptions)
   taro?: boolean;
+  formatter?: boolean | OptionsFormatter;
   overrides?: OverridesConfigs;
 };
 
@@ -25,4 +26,12 @@ export type OptionsVue = {
 
 export interface OptionsTypeScriptParserOptions {
   parserOptions?: Partial<ParserOptions>
+}
+
+export interface OptionsFormatter {
+  /**
+   * 自定义 prettier 配置
+   * @see https://prettier.io/docs/options
+   */
+  prettier: Record<string, any>
 }
