@@ -53,8 +53,10 @@ export default async function typescript(
       rules: {
         ...pluginTs.configs.strict.rules,
         "@typescript-eslint/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
+        "@typescript-eslint/no-shadow": "error",
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/no-empty-function": "error",
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-unused-expressions": ["error", {
           allowShortCircuit: true,
           allowTaggedTemplates: true,

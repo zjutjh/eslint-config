@@ -36,10 +36,15 @@ export default function javascript() {
         ...eslintJS.configs.recommended.rules,
         "camelcase": "warn",
         "no-warning-comments": "warn",
-        "no-console": ["warn", { allow: [ "warn", "error" ] }],
+        "no-console": ["warn", { allow: [ "warn", "error", "info" ] }],
         "no-var": "error",
         "no-undef": "off",
-        "prefer-const": "warn"
+        "prefer-const": "warn",
+        "arrow-body-style": "error",
+        "no-nested-ternary": "error",
+        "curly": "error",
+        "no-else-return": "error",
+        "no-implicit-coercion": "error"
       }
     }
   ] satisfies Linter.Config[];
