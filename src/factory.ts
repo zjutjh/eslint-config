@@ -27,17 +27,19 @@ export default async function zjutjh(options: OptionsConfig = {}) {
   configs.push(imports());
 
   const typescriptOptions = resolveSubOptions(options, "ts");
-  if (enableTs) configs.push(
-    await typescript({
-      ...typescriptOptions,
-      overrides: getOverrides(options, "ts")
-    })
-  );
+  if (enableTs) {
+    configs.push(
+      await typescript({
+        ...typescriptOptions,
+        overrides: getOverrides(options, "ts")
+      })
+    );
+  }
 
   if (enableVue) {
     configs.push(
       await vue({
-        ts: !!enableTs,
+        ts: Boolean(enableTs),
         taro: enableTaro,
         overrides: getOverrides(options, "vue")
       })
