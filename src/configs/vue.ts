@@ -5,7 +5,7 @@ import { ensurePackages, interopDefault } from "../utils";
 
 export default async function vue(
   options?: OptionsVue & OptionsOverrides
-) {
+): Promise<Linter.Config[]> {
   await ensurePackages([
     "eslint-plugin-vue",
     "vue-eslint-parser"
@@ -56,5 +56,5 @@ export default async function vue(
         ...options?.overrides
       }
     }
-  ] as Linter.Config[];
+  ];
 }

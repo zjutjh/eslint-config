@@ -4,7 +4,7 @@ import { OptionsOverrides } from "src/types";
 
 export default function stylistic(
   options: OptionsOverrides
-) {
+): Linter.Config[] {
 
   return [
     {
@@ -45,6 +45,5 @@ export default function stylistic(
         ...options.overrides
       }
     }
-
-  ] satisfies Linter.Config[];
+  ];
 }

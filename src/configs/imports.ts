@@ -1,7 +1,7 @@
 import { Linter } from "eslint";
 import simpleImportSortPlugin from "eslint-plugin-simple-import-sort";
 
-export default function imports() {
+export default function imports(): Linter.Config[] {
 
   return [
     {
@@ -17,5 +17,5 @@ export default function imports() {
         "simple-import-sort/exports": "error"
       }
     }
-  ] satisfies Linter.Config[];
+  ];
 }

@@ -5,7 +5,7 @@ import { ensurePackages, interopDefault } from "../utils";
 
 export default async function typescript(
   options: OptionsOverrides & OptionsTypeScriptParserOptions
-) {
+): Promise<Linter.Config[]> {
   const {
     overrides,
     parserOptions
@@ -28,6 +28,7 @@ export default async function typescript(
     {
       name: "zjutjh/typescript/setup",
       plugins: {
+        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@typescript-eslint": pluginTs
       }
     },
@@ -66,5 +67,5 @@ export default async function typescript(
         ...overrides
       }
     }
-  ] as Linter.Config[];
+  ];
 }

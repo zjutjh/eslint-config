@@ -2,7 +2,7 @@ import eslintJS from "@eslint/js";
 import { Linter } from "eslint";
 import globals from "globals";
 
-export default function javascript() {
+export default function javascript(): Linter.Config[] {
 
   return [
     {
@@ -47,5 +47,5 @@ export default function javascript() {
         "no-implicit-coercion": "error"
       }
     }
-  ] satisfies Linter.Config[];
+  ];
 }

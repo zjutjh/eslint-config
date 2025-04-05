@@ -30,7 +30,7 @@ const prettierOptions = {
 
 export default async function formatter(
   options?: OptionsOverrides & OptionsFormatter
-) {
+): Promise<Linter.Config[]> {
   await ensurePackages([
     "eslint-plugin-format"
   ]);
@@ -124,5 +124,5 @@ export default async function formatter(
         "format/prettier": ["error", { parser: "typescript", ...mergedPrettierOptions }]
       }
     }
-  ] satisfies Linter.Config[];
+  ];
 }
