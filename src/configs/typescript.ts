@@ -1,7 +1,8 @@
 import { Linter } from "eslint";
-import { OptionsOverrides, OptionsTypeScriptParserOptions } from "src/types";
+import { OptionsOverrides, OptionsTypeScriptParserOptions } from "../types";
 
 import { ensurePackages, interopDefault } from "../utils";
+import { TS_GLOBS } from "../globs";
 
 export default async function typescript(
   options: OptionsOverrides & OptionsTypeScriptParserOptions
@@ -34,7 +35,7 @@ export default async function typescript(
     },
     {
       name: "zjutjh/typescript/parser",
-      files: ["**/*.?([cm])ts"],
+      files: TS_GLOBS,
       languageOptions: {
         parser: parserTs,
         parserOptions: {
