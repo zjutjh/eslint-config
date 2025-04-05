@@ -1,9 +1,9 @@
 import { Linter } from "eslint";
 import { isPackageExists } from "local-pkg";
 
-import formatter from "./configs/formatter";
 import imports from "./configs/imports";
 import javascript from "./configs/javascript";
+import prettier from "./configs/prettier";
 import stylistic from "./configs/stylistic";
 import typescript from "./configs/typescript";
 import vue from "./configs/vue";
@@ -15,13 +15,18 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     vue: enableVue = isPackageExists("vue"),
     ts: enableTs = isPackageExists("typescript"),
     taro: enableTaro = isPackageExists("@tarojs/taro"),
-    codeStyle: enableCodeStyle = true
+    prettier: enablePrettier = false
   } = options;
 
   const configs: Linter.Config[][] = [];
 
   configs.push(javascript());
   configs.push(imports());
+  configs.push(
+    stylistic({
+      overrides: getOverrides(options, "stylistic")
+    })
+  );
 
   const typescriptOptions = resolveSubOptions(options, "ts");
   if (enableTs) {
@@ -43,17 +48,9 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     );
   }
 
-  const codeStyleOptions = resolveSubOptions(options, "codeStyle");
-  if (enableCodeStyle) {
-    if (codeStyleOptions.tool === "formatter") {
-      configs.push(await formatter(codeStyleOptions));
-    } else {
-      configs.push(
-        stylistic({
-          overrides: getOverrides(options, "stylistic")
-        })
-      );
-    }
+  const codeStyleOptions = resolveSubOptions(options, "prettier");
+  if (enablePrettier) {
+    configs.push(await prettier(codeStyleOptions));
   }
 
   return configs.flat(1) satisfies Linter.Config[];

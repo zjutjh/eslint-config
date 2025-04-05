@@ -30,10 +30,13 @@
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "catalog:peer",
     "@typescript-eslint/parser": "catalog:peer",
-    "eslint-plugin-vue": "catalog:peer",
-    "vue-eslint-parser": "catalog:peer",
     "eslint": "catalog:peer",
-    "eslint-plugin-format": "catalog:peer"
+    "eslint-config-prettier": "catalog:peer",
+    "eslint-plugin-format": "catalog:peer",
+    "eslint-plugin-vue": "catalog:peer",
+    "eslint-plugin-prettier": "catalog:peer",
+    "prettier": "catalog:peer",
+    "vue-eslint-parser": "catalog:peer"
   },
   "peerDependenciesMeta": {
     "@typescript-eslint/eslint-plugin": {
@@ -42,13 +45,22 @@
     "@typescript-eslint/parser": {
       "optional": true
     },
-    "eslint-plugin-vue": {
-      "optional": true
-    },
-    "vue-eslint-parser": {
+    "eslint-config-prettier": {
       "optional": true
     },
     "eslint-plugin-format": {
+      "optional": true
+    },
+    "eslint-plugin-prettier": {
+      "optional": true
+    },
+    "eslint-plugin-vue": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": true
+    },
+    "vue-eslint-parser": {
       "optional": true
     }
   },
@@ -62,15 +74,18 @@
   "devDependencies": {
     "@eslint/config-inspector": "catalog:dev",
     "@types/node": "catalog:dev",
-    "@typescript-eslint/eslint-plugin": "catalog:peer",
-    "@typescript-eslint/parser": "catalog:peer",
+    "@typescript-eslint/eslint-plugin": "catalog:dev",
+    "@typescript-eslint/parser": "catalog:dev",
     "bumpp": "catalog:dev",
-    "eslint": "catalog:peer",
-    "eslint-plugin-format": "catalog:peer",
-    "eslint-plugin-vue": "catalog:peer",
+    "eslint": "catalog:dev",
+    "eslint-config-prettier": "catalog:dev",
+    "eslint-plugin-format": "catalog:dev",
+    "eslint-plugin-prettier": "catalog:dev",
+    "eslint-plugin-vue": "catalog:dev",
     "jiti": "catalog:dev",
+    "prettier": "catalog:dev",
     "tsup": "catalog:dev",
     "typescript": "catalog:dev",
-    "vue-eslint-parser": "catalog:peer"
+    "vue-eslint-parser": "catalog:dev"
   }
 }
