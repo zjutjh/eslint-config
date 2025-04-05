@@ -1,7 +1,7 @@
 {
   "name": "@zjutjh/eslint-config",
   "type": "module",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "license": "ISC",
   "author": "zjutjh",
   "packageManager": "pnpm@10.6.2",
@@ -11,15 +11,16 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "dev": "config-inspector",
-    "release": "pnpm build && bumpp && pnpm publish --access public"
+    "release": "bumpp && pnpm publish --access public",
+    "prepublish": "pnpm build"
   },
   "files": ["dist"],
   "exports": {
     ".": {
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
-  "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=18.18.0"
   },
