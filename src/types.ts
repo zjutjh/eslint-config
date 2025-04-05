@@ -11,7 +11,7 @@ export type OptionsConfig = {
   vue?: boolean;
   ts?: boolean | (OptionsOverrides & OptionsTypeScriptParserOptions)
   taro?: boolean;
-  formatter?: boolean | OptionsFormatter;
+  codeStyle?: boolean | OptionsCodeStyle<string>;
   overrides?: OverridesConfigs;
 };
 
@@ -28,10 +28,23 @@ export interface OptionsTypeScriptParserOptions {
   parserOptions?: Partial<ParserOptions>
 }
 
-export interface OptionsFormatter {
+export type OptionsStylistic = {
+  tool: "stylistic";
+};
+
+export type OptionsFormatter = {
+  tool: "formatter";
   /**
    * 自定义 prettier 配置
    * @see https://prettier.io/docs/options
    */
-  prettier: Record<string, any>
-}
+  prettier?: Record<string, any>;
+};
+
+/**
+ * 默认使用 `@stylistic/eslint-plugin` 作为 formatter
+ */
+export type OptionsCodeStyle<T extends string> =
+  T extends OptionsStylistic["tool"]
+    ? OptionsStylistic
+    : OptionsFormatter;

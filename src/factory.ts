@@ -15,15 +15,12 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     vue: enableVue = isPackageExists("vue"),
     ts: enableTs = isPackageExists("typescript"),
     taro: enableTaro = isPackageExists("@tarojs/taro"),
-    formatter: enableFormatter = false
+    codeStyle: enableCodeStyle = true
   } = options;
 
   const configs: Linter.Config[][] = [];
 
   configs.push(javascript());
-  configs.push(
-    stylistic({ overrides: getOverrides(options, "stylistic") })
-  );
   configs.push(imports());
 
   const typescriptOptions = resolveSubOptions(options, "ts");
@@ -46,11 +43,17 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     );
   }
 
-  const formatterOptions = resolveSubOptions(options, "formatter");
-  if (enableFormatter) {
-    configs.push(
-      await formatter(formatterOptions)
-    );
+  const codeStyleOptions = resolveSubOptions(options, "codeStyle");
+  if (enableCodeStyle) {
+    if (codeStyleOptions.tool === "formatter") {
+      configs.push(await formatter(codeStyleOptions));
+    } else {
+      configs.push(
+        stylistic({
+          overrides: getOverrides(options, "stylistic")
+        })
+      );
+    }
   }
 
   return configs.flat(1) satisfies Linter.Config[];
