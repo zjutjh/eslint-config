@@ -14,7 +14,7 @@ const prettierOptions = {
   singleQuote: false,
   quoteProps: "as-needed",
   jsxSingleQuote: false,
-  trailingComma: "all",
+  trailingComma: "none",
   bracketSpacing: true,
   bracketSameLine: false,
   arrowParens: "always",
@@ -102,6 +102,26 @@ export default async function formatter(
       ],
       rules: {
         "format/prettier": ["error", { parser: "html", ...mergedPrettierOptions }]
+      }
+    },
+    {
+      name: "zjutjh/formatter/js/rules",
+      languageOptions: {
+        parser: pluginFormat.parserPlain
+      },
+      files: ["**/*.js", "**/*.jsx"],
+      rules: {
+        "format/prettier": ["error", { parser: "babel", ...mergedPrettierOptions }]
+      }
+    },
+    {
+      name: "zjutjh/formatter/ts/rules",
+      languageOptions: {
+        parser: pluginFormat.parserPlain
+      },
+      files: ["**/*.ts", "**/*.tsx"],
+      rules: {
+        "format/prettier": ["error", { parser: "typescript", ...mergedPrettierOptions }]
       }
     }
   ] satisfies Linter.Config[];
