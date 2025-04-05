@@ -48,7 +48,7 @@ export default async function vue(
         ...pluginVue.configs["flat/essential"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
         ...pluginVue.configs["flat/strongly-recommended"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
 
-        "vue/multi-word-component-names": ["warn", { ignore: ["index"] }],
+        "vue/multi-word-component-names": ["warn", { ignores: ["index"] }],
         "vue/component-name-in-template-casing": ["error", "kebab-case", { "registeredComponentsOnly": true }],
         "vue/max-attributes-per-line": ["error", { "singleline": { "max": 3 } }],
         "vue/prefer-true-attribute-shorthand": ["warn", options?.taro ? "never" : "always"],
