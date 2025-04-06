@@ -83,25 +83,26 @@ $ npm run lint
 很多人在意代码的格式化，这里单独拿出一章讲。
 
 支持使用 `@stylistic/eslint-plugin` (lint 工具对格式的检查) 或者传统的 formatter 工具
-(Prettier) 来对代码进行格式化。具体配置放在 `options.codeStyle` 下面。codeStyle 默认开启，以
-`@stylistic/eslint-plugin` 做为默认的风格规范工具。如果要使用 formatter，需要手动开启。
-
-> [!IMPORTANT]
-> stylistic 和 formatter 在配置上互斥，选择其中之一即可，我们会保证两者在大部分场景下代码风格的一致性。一般来说，formatter 对格式的要求比 stylistic 更严格。
+(Prettier) 来对代码进行格式化。后者的具体配置放在 `options.prettier` stylistic 默认开启，
+如果要使用 formatter，需要手动开启。
 
 ```ts
-// 启用 formatter，可选传入 prettier 的相关配置
+// 启用 prettier
 export default [
   ...(await zjutjh({
-    codeStyle: {
-      tool: "formatter"
-      prettier: {}
+    prettier: {
+      prettierSelfOptions: {
+        // 自定义 prettier 的格式化风格配置
+      },
+      lang: {
+        html: false // 关闭对一些文件的格式化，默认对支持的文件全部开启
+      }
     }
   })),
 ];
 ```
 
-stylistic 只对 js(x) 和 ts(x) 进行格式化，而 formatter 还对其他文件，如 css，vue template 等配置了格式化。
+stylistic 只对 js(x) 和 ts(x) 进行格式化，而 prettier 还对其他文件，如 css，html 等的格式化。
 如果你要格式化这些文件，需要配置编辑器来允许 eslint 校验这些类型的文件。
 
 ```jsonc
@@ -117,8 +118,11 @@ stylistic 只对 js(x) 和 ts(x) 进行格式化，而 formatter 还对其他文
   ]
 }
 ```
+
 > [!WARNING]
-> 我们使用 eslint 调用 prettier 可执行文件来进行代码格式化，所以你的编辑器不需要安装 prettier 插件，有 eslint 插件就行。prettier 的格式化配置声明在配置源码内部，如果启用了 prettier 插件，他读取不到内部的配置，会按照默认的配置来格式化，这会导致代码风格不一致。
+> 我们使用 eslint 调用 prettier 可执行文件来进行代码格式化，所以你的编辑器不需要安装 prettier 插件，有
+> eslint 插件就行。prettier 的格式化配置声明在配置源码内部，如果启用了 prettier 插件，他读取不到内部的配置，
+> 会按照默认的配置来格式化，这会导致代码风格不一致。
 
 ## 开发指南
 
