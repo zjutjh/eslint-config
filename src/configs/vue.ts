@@ -1,6 +1,6 @@
 import { Linter } from "eslint";
-import { VUE_GLOBS } from "../globs";
 
+import { VUE_GLOBS } from "../globs";
 import { OptionsOverrides, OptionsVue } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 

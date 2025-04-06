@@ -48,6 +48,7 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     );
   }
 
+  // 放到最后，eslint-config-prettier 需要覆盖一些冲突的配置
   const codeStyleOptions = resolveSubOptions(options, "prettier");
   if (enablePrettier) {
     configs.push(await prettier(codeStyleOptions));

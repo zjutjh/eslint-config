@@ -35,6 +35,7 @@
     "less",
     "scss",
     "vue",
-    "json"
+    "json",
+    "html"
   ]
 }

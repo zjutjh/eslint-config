@@ -29,4 +29,16 @@ export interface OptionsTypeScriptParserOptions {
   parserOptions?: Partial<ParserOptions>
 }
 
-export type OptionsPrettier = PrettierOptions;
+export interface OptionsPrettier {
+  prettierSelfOption?: PrettierOptions
+  /** 对哪些文件启用 prettier，默认全部启用 */
+  lang?: {
+    /** js, ts, vue 文件 */
+    es: boolean,
+    /** css, less, scss 文件 */
+    css: boolean,
+    html: boolean,
+    /** json, json5, jsonc 文件 */
+    json: boolean
+  }
+}

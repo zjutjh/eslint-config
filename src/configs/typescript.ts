@@ -1,8 +1,8 @@
 import { Linter } from "eslint";
-import { OptionsOverrides, OptionsTypeScriptParserOptions } from "../types";
 
-import { ensurePackages, interopDefault } from "../utils";
 import { TS_GLOBS } from "../globs";
+import { OptionsOverrides, OptionsTypeScriptParserOptions } from "../types";
+import { ensurePackages, interopDefault } from "../utils";
 
 export default async function typescript(
   options: OptionsOverrides & OptionsTypeScriptParserOptions

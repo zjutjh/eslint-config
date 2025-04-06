@@ -1,7 +1,7 @@
 import { Linter } from "eslint";
 import { Options as PrettierOptions } from "prettier";
 
-import { JS_GLOBS, TS_GLOBS, VUE_GLOBS } from "../globs";
+import { CSS_GLOBS, HTML_GLOBS, JS_GLOBS, JSON_GLOBS, LESS_GLOBS, SASS_GLOBS, TS_GLOBS, VUE_GLOBS } from "../globs";
 import { OptionsPrettier } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -35,27 +35,74 @@ export default async function prettier(
 ): Promise<Linter.Config[]> {
   await ensurePackages(["eslint-plugin-prettier", "eslint-config-prettier", "prettier"]);
 
-  const [configPrettier] = await Promise.all([
-    interopDefault(import("eslint-plugin-prettier/recommended"))
+  const [configPrettier, pluginFormat] = await Promise.all([
+    interopDefault(import("eslint-plugin-prettier/recommended")),
+    interopDefault(import("eslint-plugin-format"))
   ] as const);
+
+  const {
+    es: enableESFormat = true,
+    html: enableHTMLFormat = true,
+    css: enableCSSFormat = true,
+    json: enableJSONFormat = true
+  } = options?.lang ?? {};
 
   const mergedPrettierOptions = {
     ...prettierOptions,
-    ...options
+    ...options?.prettierSelfOption
   };
 
   return [
-    {
-      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS],
+    enableESFormat ? {
       name: "zjutjh/prettier/setup",
-      ...configPrettier
-    },
-    {
       files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS],
-      name: "zjutjh/prettier/rules",
+      ...configPrettier
+    } : {},
+    enableESFormat ? {
+      name: "zjutjh/prettier/es",
+      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS],
       rules: {
         "prettier/prettier": ["error", mergedPrettierOptions]
       }
-    }
+    } : {},
+    enableCSSFormat ? {
+      name: "zjutjh/prettier/css",
+      files: [...CSS_GLOBS, LESS_GLOBS, SASS_GLOBS],
+      languageOptions: {
+        parser: pluginFormat.parserPlain
+      },
+      plugins: {
+        format: pluginFormat
+      },
+      rules: {
+        "format/prettier": ["error", { parser: "css", mergedPrettierOptions }]
+      }
+    } : {},
+    enableHTMLFormat ? {
+      name: "zjutjh/prettier/html",
+      files: [...HTML_GLOBS],
+      languageOptions: {
+        parser: pluginFormat.parserPlain
+      },
+      plugins: {
+        format: pluginFormat
+      },
+      rules: {
+        "format/prettier": ["error", { parser: "html", mergedPrettierOptions }]
+      }
+    } : {},
+    enableJSONFormat ? {
+      name: "zjutjh/prettier/json",
+      files: [...JSON_GLOBS],
+      languageOptions: {
+        parser: pluginFormat.parserPlain
+      },
+      plugins: {
+        format: pluginFormat
+      },
+      rules: {
+        "format/prettier": ["error", { parser: "json", mergedPrettierOptions }]
+      }
+    } : {}
   ];
 }
