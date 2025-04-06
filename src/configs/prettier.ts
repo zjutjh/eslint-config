@@ -49,7 +49,7 @@ export default async function prettier(
 
   const mergedPrettierOptions = {
     ...prettierOptions,
-    ...options?.prettierSelfOption
+    ...options?.prettierSelfOptions
   };
 
   return [

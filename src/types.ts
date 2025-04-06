@@ -30,7 +30,7 @@ export interface OptionsTypeScriptParserOptions {
 }
 
 export interface OptionsPrettier {
-  prettierSelfOption?: PrettierOptions
+  prettierSelfOptions?: PrettierOptions
   /** 对哪些文件启用 prettier，默认全部启用 */
   lang?: {
     /** js, ts, vue 文件 */
