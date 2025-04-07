@@ -7,7 +7,7 @@
   "packageManager": "pnpm@10.6.2",
   "description": "Eslint config used by zjutjh",
   "scripts": {
-    "build": "tsup --format esm --clean --dts",
+    "build": "tsup",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "dev": "config-inspector",
