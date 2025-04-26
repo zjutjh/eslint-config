@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "dev": "config-inspector",
     "release": "bumpp && pnpm publish --access public",
-    "prepublish": "pnpm build"
+    "prepublish": "pnpm build",
+    "postinstall": "npx simple-git-hooks"
   },
   "files": [
     "dist"
@@ -28,6 +29,9 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpx lint-staged"
   },
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "catalog:peer",
@@ -103,6 +107,7 @@
     "eslint-plugin-vue": "catalog:dev",
     "jiti": "catalog:dev",
     "prettier": "catalog:dev",
+    "simple-git-hooks": "catalog:dev",
     "tsup": "catalog:dev",
     "typescript": "catalog:dev",
     "vue-eslint-parser": "catalog:dev"
