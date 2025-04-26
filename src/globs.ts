@@ -10,6 +10,14 @@ export const JS_GLOBS = [
   "**/*.?([cm])js"
 ];
 
+export const JSX_GLOBS = [
+  "**/*.?([cm])jsx"
+];
+
+export const TSX_GLOBS = [
+  "**/*.?([cm])tsx"
+];
+
 export const CSS_GLOBS = [
   "**/*.css"
 ];

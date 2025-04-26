@@ -3,6 +3,7 @@ import { isPackageExists } from "local-pkg";
 
 import imports from "./configs/imports";
 import javascript from "./configs/javascript";
+import jsx from "./configs/jsx";
 import prettier from "./configs/prettier";
 import stylistic from "./configs/stylistic";
 import typescript from "./configs/typescript";
@@ -15,6 +16,7 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     vue: enableVue = isPackageExists("vue"),
     ts: enableTs = isPackageExists("typescript"),
     taro: enableTaro = isPackageExists("@tarojs/taro"),
+    jsx: enableJSX = isPackageExists("react"),
     prettier: enablePrettier = false
   } = options;
 
@@ -46,6 +48,10 @@ export default async function zjutjh(options: OptionsConfig = {}) {
         overrides: getOverrides(options, "vue")
       })
     );
+  }
+
+  if (enableJSX) {
+    configs.push(jsx());
   }
 
   // 放到最后，eslint-config-prettier 需要覆盖一些冲突的配置

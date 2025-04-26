@@ -12,6 +12,7 @@ export type OptionsConfig = {
   vue?: boolean;
   ts?: boolean | (OptionsOverrides & OptionsTypeScriptParserOptions)
   taro?: boolean;
+  jsx?: boolean;
   prettier?: boolean | OptionsPrettier;
   overrides?: OverridesConfigs;
 };
