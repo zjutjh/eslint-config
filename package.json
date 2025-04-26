@@ -67,6 +67,8 @@
     }
   },
   "dependencies": {
+    "@antfu/install-pkg": "catalog:prod",
+    "@clack/prompts": "catalog:prod",
     "@eslint/js": "catalog:prod",
     "@stylistic/eslint-plugin": "catalog:prod",
     "eslint-plugin-simple-import-sort": "catalog:prod",

@@ -12,10 +12,18 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
 
 export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
   const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as string[];
+  if (nonExistingPackages.length === 0) {
+    return;
+  }
 
-  if (nonExistingPackages.length !== 0) {
-    const message = `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}.`;
-    throw new Error(message);
+  const p = await import("@clack/prompts");
+  const confirmed = await p.confirm({
+    message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
+  });
+
+  if (confirmed) {
+    const { installPackage } = await import("@antfu/install-pkg");
+    await installPackage(nonExistingPackages, { dev: true });
   }
 }
 
