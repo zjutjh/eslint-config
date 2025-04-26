@@ -1,7 +1,7 @@
 import { Linter } from "eslint";
 import { Options as PrettierOptions } from "prettier";
 
-import { CSS_GLOBS, HTML_GLOBS, JS_GLOBS, JSON_GLOBS, LESS_GLOBS, SASS_GLOBS, TS_GLOBS, VUE_GLOBS } from "../globs";
+import { CSS_GLOBS, HTML_GLOBS, JS_GLOBS, JSON_GLOBS, JSX_GLOBS, LESS_GLOBS, SASS_GLOBS, TS_GLOBS, TSX_GLOBS, VUE_GLOBS } from "../globs";
 import { OptionsPrettier } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -55,12 +55,12 @@ export default async function prettier(
   return [
     enableESFormat ? {
       name: "zjutjh/prettier/setup",
-      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS],
+      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS, ...TSX_GLOBS, ...JSX_GLOBS],
       ...configPrettier
     } : {},
     enableESFormat ? {
       name: "zjutjh/prettier/es",
-      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS],
+      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS, ...TSX_GLOBS, ...JSX_GLOBS],
       rules: {
         "prettier/prettier": ["error", mergedPrettierOptions]
       }

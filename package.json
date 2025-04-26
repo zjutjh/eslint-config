@@ -30,17 +30,23 @@
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
+    "@eslint-react/eslint-plugin": "catalog:peer",
     "@typescript-eslint/eslint-plugin": "catalog:peer",
     "@typescript-eslint/parser": "catalog:peer",
     "eslint": "catalog:peer",
     "eslint-config-prettier": "catalog:peer",
     "eslint-plugin-format": "catalog:peer",
-    "eslint-plugin-vue": "catalog:peer",
     "eslint-plugin-prettier": "catalog:peer",
+    "eslint-plugin-react-hooks": "catalog:peer",
+    "eslint-plugin-react-refresh": "catalog:peer",
+    "eslint-plugin-vue": "catalog:peer",
     "prettier": "catalog:peer",
     "vue-eslint-parser": "catalog:peer"
   },
   "peerDependenciesMeta": {
+    "@eslint-react/eslint-plugin": {
+      "optional": true
+    },
     "@typescript-eslint/eslint-plugin": {
       "optional": true
     },
@@ -54,6 +60,12 @@
       "optional": true
     },
     "eslint-plugin-prettier": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-refresh": {
       "optional": true
     },
     "eslint-plugin-vue": {
@@ -76,6 +88,7 @@
     "local-pkg": "catalog:prod"
   },
   "devDependencies": {
+    "@eslint-react/eslint-plugin": "catalog:dev",
     "@eslint/config-inspector": "catalog:dev",
     "@types/node": "catalog:dev",
     "@typescript-eslint/eslint-plugin": "catalog:dev",
@@ -85,6 +98,8 @@
     "eslint-config-prettier": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
     "eslint-plugin-prettier": "catalog:dev",
+    "eslint-plugin-react-hooks": "catalog:dev",
+    "eslint-plugin-react-refresh": "catalog:dev",
     "eslint-plugin-vue": "catalog:dev",
     "jiti": "catalog:dev",
     "prettier": "catalog:dev",

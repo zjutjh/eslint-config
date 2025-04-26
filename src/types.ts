@@ -6,6 +6,7 @@ export type OverridesConfigs = {
   vue?: Linter.RulesRecord,
   ts?: Linter.RulesRecord,
   stylistic?: Linter.RulesRecord,
+  react?: Linter.RulesRecord,
 };
 
 export type OptionsConfig = {
@@ -13,6 +14,7 @@ export type OptionsConfig = {
   ts?: boolean | (OptionsOverrides & OptionsTypeScriptParserOptions)
   taro?: boolean;
   jsx?: boolean;
+  react?: boolean;
   prettier?: boolean | OptionsPrettier;
   overrides?: OverridesConfigs;
 };
