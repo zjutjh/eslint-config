@@ -1,4 +1,5 @@
 import { Linter } from "eslint";
+
 import { JSX_GLOBS, TSX_GLOBS } from "../globs";
 
 export default function jsx() {
