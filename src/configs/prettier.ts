@@ -1,7 +1,7 @@
 import { Linter } from "eslint";
 import { Options as PrettierOptions } from "prettier";
 
-import { CSS_GLOBS, HTML_GLOBS, JS_GLOBS, JSON_GLOBS, JSX_GLOBS, LESS_GLOBS, SASS_GLOBS, TS_GLOBS, TSX_GLOBS, VUE_GLOBS } from "../globs";
+import { GLOB_CSS, GLOB_HTML, GLOB_JS, GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_JSX, GLOB_LESS, GLOB_SCSS, GLOB_TS, GLOB_TSX, GLOB_VUE } from "../globs";
 import { OptionsPrettier } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -55,19 +55,19 @@ export default async function prettier(
   return [
     enableESFormat ? {
       name: "zjutjh/prettier/setup",
-      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS, ...TSX_GLOBS, ...JSX_GLOBS],
+      files: [GLOB_VUE, GLOB_TS, GLOB_JS, GLOB_TSX, GLOB_JSX],
       ...configPrettier
     } : {},
     enableESFormat ? {
       name: "zjutjh/prettier/es",
-      files: [...VUE_GLOBS, ...TS_GLOBS, ...JS_GLOBS, ...TSX_GLOBS, ...JSX_GLOBS],
+      files: [GLOB_VUE, GLOB_TS, GLOB_JS, GLOB_TSX, GLOB_JSX],
       rules: {
         "prettier/prettier": ["error", mergedPrettierOptions]
       }
     } : {},
     enableCSSFormat ? {
       name: "zjutjh/prettier/css",
-      files: [...CSS_GLOBS, LESS_GLOBS, SASS_GLOBS],
+      files: [GLOB_CSS, GLOB_LESS, GLOB_SCSS],
       languageOptions: {
         parser: pluginFormat.parserPlain
       },
@@ -80,7 +80,7 @@ export default async function prettier(
     } : {},
     enableHTMLFormat ? {
       name: "zjutjh/prettier/html",
-      files: [...HTML_GLOBS],
+      files: [GLOB_HTML],
       languageOptions: {
         parser: pluginFormat.parserPlain
       },
@@ -93,7 +93,7 @@ export default async function prettier(
     } : {},
     enableJSONFormat ? {
       name: "zjutjh/prettier/json",
-      files: [...JSON_GLOBS],
+      files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
       languageOptions: {
         parser: pluginFormat.parserPlain
       },

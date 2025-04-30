@@ -1,6 +1,6 @@
 import { Linter } from "eslint";
 
-import { VUE_GLOBS } from "../globs";
+import { GLOB_VUE } from "../globs";
 import { OptionsOverrides, OptionsVue } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -29,7 +29,7 @@ export default async function vue(
     },
     {
       name: "zjutjh/vue/rules",
-      files: VUE_GLOBS,
+      files: [GLOB_VUE],
       languageOptions: {
         parser: parserVue,
         parserOptions: {

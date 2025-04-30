@@ -1,6 +1,6 @@
 import { Linter } from "eslint";
 
-import { TS_GLOBS, TSX_GLOBS } from "../globs";
+import { GLOB_TS, GLOB_TSX } from "../globs";
 import { OptionsOverrides, OptionsTypeScriptParserOptions } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -35,7 +35,7 @@ export default async function typescript(
     },
     {
       name: "zjutjh/typescript/parser",
-      files: [...TS_GLOBS, ...TSX_GLOBS],
+      files: [GLOB_TS, GLOB_TSX],
       languageOptions: {
         parser: parserTs,
         parserOptions: {

@@ -1,12 +1,12 @@
 import { Linter } from "eslint";
 
-import { JSX_GLOBS, TSX_GLOBS } from "../globs";
+import { GLOB_JSX, GLOB_TSX } from "../globs";
 
 export default function jsx() {
   return [
     {
       name: "zjutjh/jsx/setup",
-      files: [...TSX_GLOBS, ...JSX_GLOBS],
+      files: [GLOB_TSX, GLOB_JSX],
       languageOptions: {
         parserOptions: {
           ecmaFeatures: {

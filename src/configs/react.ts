@@ -1,6 +1,6 @@
 import { Linter } from "eslint";
 
-import { JS_GLOBS, JSX_GLOBS, TS_GLOBS, TSX_GLOBS } from "../globs";
+import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from "../globs";
 import { OptionsOverrides } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -46,7 +46,7 @@ export default async function react(options: OptionsOverrides): Promise<Linter.C
     },
     {
       name: "zjutjh/react/rules",
-      files: [JSX_GLOBS, TSX_GLOBS, JS_GLOBS, TS_GLOBS],
+      files: [GLOB_JSX, GLOB_TSX, GLOB_JS, GLOB_TS],
       rules: {
         ...pluginReact.configs.recommended.rules,
         ...pluginReactHooks.configs.recommended.rules,
