@@ -13,7 +13,7 @@ import vue from "./configs/vue";
 import { OptionsConfig } from "./types";
 import { getOverrides, resolveSubOptions } from "./utils";
 
-export default async function zjutjh(options: OptionsConfig = {}) {
+export default async function zjutjh(options: OptionsConfig = {}, ...userConfigs: Awaited<Linter.Config[]>) {
   const {
     vue: enableVue = isPackageExists("vue"),
     ts: enableTs = isPackageExists("typescript"),
@@ -73,5 +73,5 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     configs.push(await prettier(codeStyleOptions));
   }
 
-  return configs.flat(1) satisfies Linter.Config[];
+  return configs.flat(1).concat(userConfigs);
 }
