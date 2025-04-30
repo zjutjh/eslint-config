@@ -4,7 +4,7 @@
   "version": "0.6.0",
   "license": "ISC",
   "author": "zjutjh",
-  "packageManager": "pnpm@10.9.0",
+  "packageManager": "pnpm@10.10.0",
   "description": "Eslint config used by zjutjh",
   "scripts": {
     "build": "tsup",
