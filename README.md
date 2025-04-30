@@ -27,56 +27,81 @@ import zjutjh from "@zjutjh/eslint-config";
 export default zjutjh();
 ```
 
-```ts
-// 添加定制化配置
-export default [
-  ...await zjutjh(),
-  {
-    name: "local/ignores",
-    ignores: [
-      "dist"
-    ]
-  }
-]
-```
-
-> [!TIP]
-> 在项目中调整配置时，如果对最终计算出的的配置有疑问，可以使用 [@eslint/config-inspector](https://github.com/eslint/config-inspector) 来调试配置。
-
-```ts
-// 覆盖原有配置
-export default [
-  ...await zjutjh({
-    overrides: {
-      vue: {
-        "vue/multi-word-component-names": "off"
-      }
-    }
-  })
-]
-```
-
-> [!WARNING]
-> 不要在数组内添加新的配置来修改原有配置，请使用函数提供的 overrides 属性来修改。
->
-> 在一个配置对象内，一条规则的生效需要声明出对应的插件。对于用户而言，在工厂函数 `zjutjh()` 之外声明规则，无法直接获知一条规则对应的插件是什么。
-> 所以函数开放了 `overrides` 入口来透传配置到内部的配置对象中。自定义的配置被带到合适插件的生效范围之下，并结合 JS 声明同名的对象属性来支持配置的覆盖。
-
 在 `package.json` 中添加如下命令。
 
 ```json
 {
   "scripts": {
-    "lint": "eslint"
+    "lint": "eslint ."
   }
 }
 ```
 
-在项目中运行即可。如果有提示按照依赖，请按照提示出的包名安装（应该安装到 `devDependencies`）。
+在项目中运行即可。项目第一次接入可能会有安装依赖的交互式命令，按照提示完成依赖安装即可。
 
 ```sh
 $ npm run lint
 ```
+
+大部分场景到这里就能使用了，不需要额外的配置。如果你想自定义一些配置，请往下看。
+
+### 自定义配置
+
+基于现有能力修改配置
+
+```ts
+export default zjutjh({
+  overrides: {
+    vue: {
+      "vue/multi-word-component-names": ["off"]
+    },
+    stylistic: {
+      "stylistic/quotes": ["error", "single"]
+    }
+  },
+  ignores: [
+    "**/build"
+  ]
+})
+```
+
+扩展 eslint 配置
+
+```ts
+export default zjutjh(
+  // 第一个参数是 zjutjh 专用的配置
+  {
+    overrides: {
+      stylistic: {
+        "stylistic/quotes": ["error", "single"]
+      }
+    },
+    ignores: [
+      "**/build"
+    ]
+  },
+  // 从第二个参数开始，可以任意传入多个 flat config
+  {
+    files: ["**/*.vue"],
+    rules: {
+      "vue/multi-word-component-names": ["off"]
+    }
+  },
+  {
+    // 不传入 files glob, 则对所有文件生效 */
+    files: [/** any globs */],
+    plugins: {
+      // 使用 eslint 插件
+    },
+    rules: {
+      // 使用 eslint 规则
+    }
+  }
+)
+```
+
+> [!TIP]
+> 在项目中调整配置时，如果对最终生效的配置有疑问，可以使用 [@eslint/config-inspector](https://github.com/eslint/config-inspector) 来调试配置。
 
 ## 代码格式化
 
@@ -88,18 +113,16 @@ $ npm run lint
 
 ```ts
 // 启用 prettier
-export default [
-  ...(await zjutjh({
-    prettier: {
-      prettierSelfOptions: {
-        // 自定义 prettier 的格式化风格配置
-      },
-      lang: {
-        html: false // 关闭对一些文件的格式化，默认对支持的文件全部开启
-      }
+export default zjutjh({
+  prettier: {
+    prettierSelfOptions: {
+      // 自定义 prettier 的格式化风格配置
+    },
+    lang: {
+      html: false // 关闭对一些文件的格式化，默认对支持的文件全部开启
     }
-  })),
-];
+  }
+}),
 ```
 
 stylistic 只对 js(x) 和 ts(x) 进行格式化，而 prettier 还对其他文件，如 css，html 等的格式化。
