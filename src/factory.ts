@@ -1,6 +1,7 @@
 import { Linter } from "eslint";
 import { isPackageExists } from "local-pkg";
 
+import ignores from "./configs/ignores";
 import imports from "./configs/imports";
 import javascript from "./configs/javascript";
 import jsx from "./configs/jsx";
@@ -19,14 +20,16 @@ export default async function zjutjh(options: OptionsConfig = {}) {
     taro: enableTaro = isPackageExists("@tarojs/taro"),
     jsx: enableJSX = isPackageExists("react"),
     react: enableReact = isPackageExists("react"),
+    ignores: userIgnores,
     prettier: enablePrettier = false
   } = options;
 
   const configs: Linter.Config[][] = [];
 
-  configs.push(javascript());
-  configs.push(imports());
   configs.push(
+    ignores({ userIgnores }),
+    javascript(),
+    imports(),
     stylistic({
       overrides: getOverrides(options, "stylistic")
     })

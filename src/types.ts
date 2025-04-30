@@ -16,6 +16,7 @@ export type OptionsConfig = {
   jsx?: boolean;
   react?: boolean;
   prettier?: boolean | OptionsPrettier;
+  ignores?: string[];
   overrides?: OverridesConfigs;
 };
 
@@ -44,4 +45,8 @@ export interface OptionsPrettier {
     /** json, json5, jsonc 文件 */
     json: boolean
   }
+}
+
+export interface OptionsIgnores {
+  userIgnores?: string[]
 }
