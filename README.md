@@ -1,9 +1,6 @@
-# `@zjutjh/eslint-config`
+# `@zjutjh/eslint-config` [![npm-version](https://img.shields.io/npm/v/%40zjutjh%2Feslint-config)](https://www.npmjs.com/package/@zjutjh/eslint-config)
 
-[![npm-version](https://img.shields.io/npm/v/%40zjutjh%2Feslint-config
-)](https://www.npmjs.com/package/@zjutjh/eslint-config)
-
-zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 项目。
+zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 等项目。
 
 ## 使用方式
 
@@ -37,11 +34,16 @@ export default zjutjh();
 }
 ```
 
-在项目中运行即可。项目第一次接入可能会有安装依赖的交互式命令，按照提示完成依赖安装即可。
+在项目根目录运行下面的命令，没有报错就算配置成功。
 
 ```sh
 $ npm run lint
 ```
+
+> [!NOTE]
+> 项目第一次接入时运行 `eslint .` 可能会有安装依赖的交互式命令，按照提示完成依赖安装即可。
+>
+> 在每次修改依赖配置后，最好也运行一遍 lint 命令，部分配置项可能需要安装额外的依赖。
 
 大部分场景到这里就能使用了，不需要额外的配置。如果你想自定义一些配置，请往下看。
 
@@ -89,7 +91,7 @@ export default zjutjh(
   },
   {
     // 不传入 files glob, 则对所有文件生效 */
-    files: [/** any globs */],
+    // files: [/** any globs */],
     plugins: {
       // 使用 eslint 插件
     },
@@ -107,26 +109,33 @@ export default zjutjh(
 
 很多人在意代码的格式化，这里单独拿出一章讲。
 
-支持使用 `@stylistic/eslint-plugin` (lint 工具对格式的检查) 或者传统的 formatter 工具
-(Prettier) 来对代码进行格式化。后者的具体配置放在 `options.prettier` stylistic 默认开启，
-如果要使用 formatter，需要手动开启。
+内置两种格式化工具。`@stylistic/eslint-plugin` (lint 工具对格式的检查) 和传统的 formatter 工具
+(Prettier) 。stylistic 默认开启，如果要使用 Prettier，需要手动开启。
 
 ```ts
 // 启用 prettier
+export default zjutjh({
+  prettier: true
+}),
+```
+
+支持自定义 prettier 格式化选项，以及关闭对部分文件的格式化（默认对支持的文件全部开启）
+
+```ts
 export default zjutjh({
   prettier: {
     prettierSelfOptions: {
       // 自定义 prettier 的格式化风格配置
     },
     lang: {
-      html: false // 关闭对一些文件的格式化，默认对支持的文件全部开启
+      html: false // 关闭对一些文件的格式化。默认对支持的文件全部开启
     }
   }
-}),
+})
 ```
 
 stylistic 只对 js(x) 和 ts(x) 进行格式化，而 prettier 还对其他文件，如 css，html 等的格式化。
-如果你要格式化这些文件，需要配置编辑器来允许 eslint 校验这些类型的文件。
+如果你要**在编辑器中**自动格式化这些文件，需要配置编辑器来允许 eslint 校验这些类型的文件。
 
 ```jsonc
 // 可以参考仓库下的 .vscode/settings.json 给 vscode 配置
