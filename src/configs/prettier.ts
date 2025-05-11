@@ -33,7 +33,12 @@ const prettierOptions: PrettierOptions = {
 export default async function prettier(
   options?: OptionsPrettier
 ): Promise<Linter.Config[]> {
-  await ensurePackages(["eslint-plugin-prettier", "eslint-config-prettier", "prettier"]);
+  await ensurePackages([
+    "eslint-plugin-format",
+    "eslint-plugin-prettier",
+    "eslint-config-prettier",
+    "prettier"
+  ]);
 
   const [configPrettier, pluginFormat] = await Promise.all([
     interopDefault(import("eslint-plugin-prettier/recommended")),
