@@ -2,16 +2,16 @@ import { ParserOptions } from "@typescript-eslint/parser";
 import { Linter } from "eslint";
 import { Options as PrettierOptions } from "prettier";
 
-export type OverridesConfigs = {
+export interface OverridesConfigs {
   vue?: Linter.RulesRecord,
   ts?: Linter.RulesRecord,
   stylistic?: Linter.RulesRecord,
   react?: Linter.RulesRecord,
 };
 
-export type OptionsConfig = {
+export interface OptionsConfig extends OptionsComponentExts {
   vue?: boolean;
-  ts?: boolean | (OptionsOverrides & OptionsTypeScriptParserOptions)
+  ts?: boolean | OptionsTypeScriptParserOptions;
   taro?: boolean;
   jsx?: boolean;
   react?: boolean;
@@ -20,11 +20,15 @@ export type OptionsConfig = {
   overrides?: OverridesConfigs;
 };
 
-export type OptionsOverrides = {
+export interface OptionsOverrides {
   overrides?: Linter.RulesRecord
 };
 
-export type OptionsVue = {
+export interface OptionsComponentExts {
+  componentExts?: string[]
+}
+
+export interface OptionsVue {
   ts: boolean,
   taro: boolean
 };

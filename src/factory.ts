@@ -15,6 +15,7 @@ import { getOverrides, resolveSubOptions } from "./utils";
 
 export default async function zjutjh(options: OptionsConfig = {}, ...userConfigs: Awaited<Linter.Config[]>) {
   const {
+    componentExts = [],
     vue: enableVue = isPackageExists("vue"),
     ts: enableTs = isPackageExists("typescript"),
     taro: enableTaro = isPackageExists("@tarojs/taro"),
@@ -34,6 +35,10 @@ export default async function zjutjh(options: OptionsConfig = {}, ...userConfigs
       overrides: getOverrides(options, "stylistic")
     })
   );
+
+  if (enableVue) {
+    componentExts.push("vue");
+  }
 
   const typescriptOptions = resolveSubOptions(options, "ts");
   if (enableTs) {
