@@ -45,6 +45,7 @@ export default async function zjutjh(options: OptionsConfig = {}, ...userConfigs
     configs.push(
       await typescript({
         ...typescriptOptions,
+        componentExts,
         overrides: getOverrides(options, "ts")
       })
     );
