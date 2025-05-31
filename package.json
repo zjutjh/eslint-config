@@ -7,7 +7,7 @@
   "packageManager": "pnpm@10.10.0",
   "description": "Eslint config used by zjutjh",
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "dev": "config-inspector",
@@ -112,7 +112,7 @@
     "jiti": "catalog:dev",
     "prettier": "catalog:dev",
     "simple-git-hooks": "catalog:dev",
-    "tsup": "catalog:dev",
+    "tsdown": "catalog:dev",
     "typescript": "catalog:dev",
     "vue-eslint-parser": "catalog:dev"
   }
