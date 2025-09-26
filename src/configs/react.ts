@@ -27,17 +27,11 @@ export default async function react(options: OptionsOverrides): Promise<Linter.C
     {
       name: "zjutjh/react/setup",
       plugins: {
-        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@eslint-react": plugins["@eslint-react"],
-        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@eslint-react/debug": plugins["@eslint-react/debug"],
-        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@eslint-react/dom": plugins["@eslint-react/dom"],
-        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@eslint-react/hooks-extra": plugins["@eslint-react/hooks-extra"],
-        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@eslint-react/naming-convention": plugins["@eslint-react/naming-convention"],
-        // @ts-expect-error 依赖的类型有问题，不影响使用
         "@eslint-react/web-api": plugins["@eslint-react/web-api"],
 
         "react-hooks": pluginReactHooks,
