@@ -44,7 +44,9 @@ export default function javascript(): Linter.Config[] {
         "no-nested-ternary": "error",
         "curly": "error",
         "no-else-return": "error",
-        "no-implicit-coercion": "error"
+        "no-implicit-coercion": "error",
+        "no-useless-concat": "error",
+        "prefer-template": "error"
       }
     }
   ];
