@@ -5,6 +5,7 @@ import ignores from "./configs/ignores";
 import imports from "./configs/imports";
 import javascript from "./configs/javascript";
 import jsx from "./configs/jsx";
+import misc from "./configs/misc";
 import prettier from "./configs/prettier";
 import react from "./configs/react";
 import stylistic from "./configs/stylistic";
@@ -33,7 +34,8 @@ export default async function zjutjh(options: OptionsConfig = {}, ...userConfigs
     imports(),
     stylistic({
       overrides: getOverrides(options, "stylistic")
-    })
+    }),
+    misc()
   );
 
   if (enableVue) {

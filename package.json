@@ -93,6 +93,7 @@
     "@stylistic/eslint-plugin": "catalog:prod",
     "eslint-plugin-import": "catalog:prod",
     "eslint-plugin-simple-import-sort": "catalog:prod",
+    "eslint-plugin-unicorn": "catalog:prod",
     "globals": "catalog:prod",
     "local-pkg": "catalog:prod"
   },
