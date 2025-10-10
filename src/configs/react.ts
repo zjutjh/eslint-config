@@ -43,8 +43,7 @@ export default async function react(options: OptionsOverrides): Promise<Linter.C
       files: [GLOB_JSX, GLOB_TSX, GLOB_JS, GLOB_TS],
       rules: {
         ...pluginReact.configs.recommended.rules,
-        // @ts-expect-error 依赖没有导出类型，实际上数组里面第一个元素就是配置
-        ...pluginReactHooks.configs.recommended.at(0)?.rules,
+        ...pluginReactHooks.configs.recommended.rules,
         "react-refresh/only-export-components": "warn",
         "@eslint-react/no-leaked-conditional-rendering": "error",
         "@eslint-react/no-missing-component-display-name": "error",
