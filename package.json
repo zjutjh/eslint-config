@@ -1,7 +1,7 @@
 {
   "name": "@zjutjh/eslint-config",
   "type": "module",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "license": "ISC",
   "author": "zjutjh",
   "packageManager": "pnpm@10.10.0",
