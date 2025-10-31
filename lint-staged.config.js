@@ -1,3 +1,4 @@
 export default {
-  "*.ts": ["eslint --fix"]
+  "*.ts": ["eslint --fix"],
+  "*": ["cspell"]
 };

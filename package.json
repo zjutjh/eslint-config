@@ -104,6 +104,7 @@
     "@typescript-eslint/eslint-plugin": "catalog:dev",
     "@typescript-eslint/parser": "catalog:dev",
     "bumpp": "catalog:dev",
+    "cspell": "catalog:dev",
     "eslint": "catalog:dev",
     "eslint-config-prettier": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",

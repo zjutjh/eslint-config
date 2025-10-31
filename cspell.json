@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "language": "en",
+  "dictionaries": [
+    "typescript",
+    "node",
+    "html",
+    "css",
+    "bash",
+    "npm"
+  ],
+  "words": [
+    "bumpp",
+    "dbaeumer",
+    "tarojs",
+    "trae",
+    "unicon",
+    "unplugin",
+    "vueuse",
+    "zjutjh"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "pnpm-lock.yaml",
+    "**/dist/**"
+  ]
+}
