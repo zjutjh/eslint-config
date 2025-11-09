@@ -70,7 +70,14 @@ export default async function typescript(
           allowTaggedTemplates: true,
           allowTernary: true
         }],
-
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            args: "all",
+            argsIgnorePattern: "^_",
+            caughtErrors: "all"
+          }
+        ],
         ...overrides
       }
     }
