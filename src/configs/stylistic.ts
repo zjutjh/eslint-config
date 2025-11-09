@@ -14,6 +14,7 @@ export default function stylistic(
         "@stylistic": pluginStylistic
       },
       rules: {
+        "@stylistic/eol-last": ["error", "always"],
         "@stylistic/indent": ["error", 2],
         "@stylistic/keyword-spacing": "error",
         "@stylistic/key-spacing": "error",
