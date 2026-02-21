@@ -14,7 +14,10 @@ import vue from "./configs/vue";
 import { OptionsConfig } from "./types";
 import { getOverrides, resolveSubOptions } from "./utils";
 
-export default async function zjutjh(options: OptionsConfig = {}, ...userConfigs: Awaited<Linter.Config[]>) {
+export default async function zjutjh(
+  options: OptionsConfig = {},
+  ...userConfigs: Awaited<Linter.Config[]>
+): Promise<Linter.Config[]> {
   const {
     componentExts = [],
     vue: enableVue = isPackageExists("vue"),
