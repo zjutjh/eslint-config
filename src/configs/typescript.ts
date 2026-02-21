@@ -44,10 +44,7 @@ export default async function typescript(
         parserOptions: {
           ecmaVersion: 2022,
           sourceType: "module",
-          projectService: {
-            allowDefaultProject: ["./*.js"],
-            defaultProject: "./tsconfig.json"
-          },
+          projectService: true,
           tsconfigRootDir: process.cwd(),
           ...parserOptions
         }
