@@ -1,3 +1,4 @@
+import { Plugin } from "@eslint/core";
 import { Linter } from "eslint";
 
 import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from "../globs";
@@ -21,19 +22,21 @@ export default async function react(options: OptionsOverrides): Promise<Linter.C
     interopDefault(import("eslint-plugin-react-refresh"))
   ]);
 
-  const plugins = pluginReact.configs.all.plugins;
+  // @ts-expect-error 运行时存在 `plugins` 属性
+  const plugins = pluginReact.configs.all.plugins as Record<string, Plugin>;
 
   return [
     {
       name: "zjutjh/react/setup",
       plugins: {
         "@eslint-react": plugins["@eslint-react"],
-        "@eslint-react/debug": plugins["@eslint-react/debug"],
         "@eslint-react/dom": plugins["@eslint-react/dom"],
         "@eslint-react/hooks-extra": plugins["@eslint-react/hooks-extra"],
         "@eslint-react/naming-convention": plugins["@eslint-react/naming-convention"],
+        "@eslint-react/rsc": plugins["@eslint-react/rsc"],
         "@eslint-react/web-api": plugins["@eslint-react/web-api"],
 
+        // @ts-expect-error `pluginReactHooks.configs.flat` 属性导致类型错误，运行时不会消费该属性
         "react-hooks": pluginReactHooks,
         "react-refresh": pluginReactRefresh
       }
