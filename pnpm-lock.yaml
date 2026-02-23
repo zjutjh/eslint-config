@@ -39,9 +39,6 @@ catalogs:
     cspell:
       specifier: ^9.6.4
       version: 9.6.4
-    jiti:
-      specifier: ^2.6.1
-      version: 2.6.1
     simple-git-hooks:
       specifier: ^2.13.1
       version: 2.13.1
@@ -183,9 +180,6 @@ importers:
       eslint-plugin-vue:
         specifier: catalog:optional
         version: 10.8.0(@stylistic/eslint-plugin@5.9.0(eslint@10.0.1(jiti@2.6.1)))(@typescript-eslint/parser@8.56.0(eslint@10.0.1(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.1(jiti@2.6.1))(vue-eslint-parser@10.4.0(eslint@10.0.1(jiti@2.6.1)))
-      jiti:
-        specifier: catalog:infra
-        version: 2.6.1
       lint-staged:
         specifier: catalog:binary
         version: 16.2.7

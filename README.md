@@ -13,7 +13,7 @@ $ pnpm add -D eslint
 
 $ pnpm add -D @zjutjh/eslint-config
 
-# 如果你想使用 ts 编写配置文件，还需要安装 typescript, jiti 来帮助 eslint 解析配置
+# 如果你想使用 ts 编写配置文件，还需要安装 typescript, jiti 来帮助 eslint 解析配置。（Node 24 版本后不需要安装 jiti）
 $ pnpm add -D typescript jiti
 ```
 

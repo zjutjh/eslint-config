@@ -113,7 +113,6 @@
     "eslint-plugin-react-hooks": "catalog:optional",
     "eslint-plugin-react-refresh": "catalog:optional",
     "eslint-plugin-vue": "catalog:optional",
-    "jiti": "catalog:infra",
     "lint-staged": "catalog:binary",
     "prettier": "catalog:binary",
     "simple-git-hooks": "catalog:infra",
