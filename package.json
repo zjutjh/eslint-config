@@ -20,12 +20,12 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
     }
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": ">=24"
   },
   "repository": {
     "type": "git",
