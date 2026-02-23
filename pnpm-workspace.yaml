@@ -1,6 +1,7 @@
 catalogs:
   binary:
     "eslint": "^10.0.1"
+    "lint-staged": "^16.2.7"
     "prettier": "^3.8.1"
   dev:
     "@eslint/config-inspector": "^1.4.2"

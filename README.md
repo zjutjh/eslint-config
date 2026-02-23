@@ -5,7 +5,7 @@ zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 等项目。
 ## 使用方式
 
 > [!IMPORTANT]
-> ESLint 版本需要 ^9.9.0 以上，Node 版本需要 ^20.19.0 以上
+> ESLint 版本需要 ^10.0.0 以上，Node 版本需要 ^20.19.0 以上
 
 ```sh
 # 确保你已经安装了 eslint

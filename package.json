@@ -5,7 +5,7 @@
   "license": "ISC",
   "author": "zjutjh",
   "packageManager": "pnpm@10.30.1",
-  "description": "Eslint config used by zjutjh",
+  "description": "ESLint config used by zjutjh",
   "scripts": {
     "build": "tsdown",
     "lint": "eslint .",
@@ -35,7 +35,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpx lint-staged"
+    "pre-commit": "pnpm lint-staged"
   },
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "catalog:optional",
@@ -114,6 +114,7 @@
     "eslint-plugin-react-refresh": "catalog:optional",
     "eslint-plugin-vue": "catalog:optional",
     "jiti": "catalog:infra",
+    "lint-staged": "catalog:binary",
     "prettier": "catalog:binary",
     "simple-git-hooks": "catalog:infra",
     "tsdown": "catalog:infra",
