@@ -1,15 +1,22 @@
 import { Linter } from "eslint";
-import eslintImportPlugin from "eslint-plugin-import";
 import simpleImportSortPlugin from "eslint-plugin-simple-import-sort";
 
-export default function imports(): Linter.Config[] {
+import { ensurePackages, interopDefault } from "../utils";
+
+export default async function imports(): Promise<Linter.Config[]> {
+
+  await ensurePackages([
+    "eslint-plugin-import-x"
+  ]);
+
+  const pluginImportX = await interopDefault(import("eslint-plugin-import-x"));
 
   return [
     {
       name: "zjutjh/imports/setup",
       plugins: {
         "simple-import-sort": simpleImportSortPlugin,
-        "import": eslintImportPlugin
+        "import-x": pluginImportX
       }
     },
     {
@@ -17,7 +24,7 @@ export default function imports(): Linter.Config[] {
       rules: {
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
-        "import/no-duplicates": "error"
+        "import-x/no-duplicates": "error"
       }
     }
   ];
