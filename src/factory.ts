@@ -34,7 +34,7 @@ export default async function zjutjh(
   configs.push(
     ignores({ userIgnores }),
     javascript(),
-    await imports(),
+    imports(),
     stylistic({
       overrides: getOverrides(options, "stylistic")
     }),

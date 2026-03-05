@@ -116,6 +116,9 @@ importers:
       '@stylistic/eslint-plugin':
         specifier: catalog:required
         version: 5.9.0(eslint@10.0.1(jiti@2.6.1))
+      eslint-plugin-import-x:
+        specifier: ^4.16.1
+        version: 4.16.1(@typescript-eslint/utils@8.56.0(eslint@10.0.1(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.1(jiti@2.6.1))
       eslint-plugin-simple-import-sort:
         specifier: catalog:required
         version: 12.1.1(eslint@10.0.1(jiti@2.6.1))
@@ -162,9 +165,6 @@ importers:
       eslint-plugin-format:
         specifier: catalog:optional
         version: 1.4.0(eslint@10.0.1(jiti@2.6.1))
-      eslint-plugin-import-x:
-        specifier: ^4.16.1
-        version: 4.16.1(@typescript-eslint/utils@8.56.0(eslint@10.0.1(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.1(jiti@2.6.1))
       eslint-plugin-prettier:
         specifier: catalog:optional
         version: 5.5.5(eslint-config-prettier@10.1.8(eslint@10.0.1(jiti@2.6.1)))(eslint@10.0.1(jiti@2.6.1))(prettier@3.8.1)
