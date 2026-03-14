@@ -91,7 +91,7 @@
     "@clack/prompts": "catalog:helper",
     "@eslint/js": "catalog:required",
     "@stylistic/eslint-plugin": "catalog:required",
-    "eslint-plugin-import": "catalog:required",
+    "eslint-plugin-import-x": "catalog:required",
     "eslint-plugin-simple-import-sort": "catalog:required",
     "eslint-plugin-unicorn": "catalog:required",
     "globals": "catalog:helper",

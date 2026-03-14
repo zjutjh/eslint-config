@@ -55,6 +55,17 @@ export default async function typescript(
       files,
       rules: {
         ...pluginTs.configs.strict.rules,
+        "@typescript-eslint/restrict-template-expressions": [
+          "error",
+          {
+            allowNumber: true,
+            allowBoolean: false,
+            allowAny: false,
+            allowNullish: false,
+            allowRegExp: false,
+            allowArray: false
+          }
+        ],
         "@typescript-eslint/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
         "@typescript-eslint/require-await": "error",
         "@typescript-eslint/no-shadow": "error",
