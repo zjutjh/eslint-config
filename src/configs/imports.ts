@@ -1,5 +1,5 @@
 import { Linter } from "eslint";
-import importXPlugin from "eslint-plugin-import-x";
+import importXPlugin, { flatConfigs as importXFlatConfigs } from "eslint-plugin-import-x";
 import simpleImportSortPlugin from "eslint-plugin-simple-import-sort";
 
 export default function imports(): Linter.Config[] {
@@ -17,7 +17,7 @@ export default function imports(): Linter.Config[] {
       rules: {
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
-        "import-x/no-duplicates": "error"
+        ...importXFlatConfigs.recommended.rules
       }
     }
   ];
