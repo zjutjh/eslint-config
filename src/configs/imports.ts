@@ -17,7 +17,12 @@ export default function imports(): Linter.Config[] {
       rules: {
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
-        ...importXFlatConfigs.recommended.rules
+        ...importXFlatConfigs.recommended.rules,
+        /**
+         * 一般都使用打包工具，这项可以关闭
+         * @see https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-unresolved.md#when-not-to-use-it
+         */
+        "import-x/no-unresolved": "off"
       }
     }
   ];
