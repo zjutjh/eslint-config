@@ -1,6 +1,6 @@
 ---
 name: setup-zjutjh-eslint
-description: 在任意 JS/TS/Vue3/React 项目中接入并配置 @zjutjh/eslint-config（ESLint Flat Config / eslint.config.*）。只要用户提到“接入 eslint 规则 / lint / 代码规范 / eslint.config / prettier 冲突 / zjutjh eslint”，就优先使用本技能来给出可落地的安装命令与配置文件改动。
+description: 在 JS/TS/Vue/React 项目中接入 @zjutjh/eslint-config（ESLint Flat Config）。用户提到 eslint / lint / 代码规范 / 代码检查 / @zjutjh 等相关需求时触发。
 ---
 
 # 接入 `@zjutjh/eslint-config`
@@ -26,12 +26,17 @@ description: 在任意 JS/TS/Vue3/React 项目中接入并配置 @zjutjh/eslint-
 
 ### 1) 识别项目上下文
 
-读取项目根目录的 `package.json` 与锁文件来判断：
+收集以下信息（读文件 / 搜索文件，用你可用的工具完成即可）：
 
-- 包管理器：优先看 `packageManager` 字段，其次看锁文件（`pnpm-lock.yaml`/`package-lock.json`/`yarn.lock`/`bun.lockb`）。
-- 语言：是否 TypeScript（`typescript` 依赖、`tsconfig.json`、或大量 `.ts/.tsx`）。
-- 框架：Vue（`vue` 依赖）、React（`react` 依赖）、或其他。
-- 现有 ESLint：是否已有 `eslint.config.*` 或 `.eslintrc*`（如有，避免“全删重来”，而是迁移/并存策略要说明清楚）。
+1. 读取根目录 `package.json`，从中判断：
+   - 包管理器：优先看 `packageManager` 字段；同时记录 `engines.node`（用于后续判断是否需要 `jiti`）。
+   - 语言：是否有 `typescript` 依赖。
+   - 框架：是否有 `vue` / `react` 依赖。
+2. 在根目录查找锁文件（`pnpm-lock.yaml` / `package-lock.json` / `yarn.lock` / `bun.lockb`），确认包管理器（与步骤 1 互为补充）。
+3. 查找 `tsconfig.json`（确认 TS 项目）和已有的 `eslint.config.*` / `.eslintrc*`。
+4. 查找 `.nvmrc` 或 `.node-version`（辅助判断 Node 版本，用于决定是否安装 `jiti`）。
+
+> **已有旧版 `.eslintrc*` 的情况**：本 skill 目前不覆盖旧格式到 Flat Config 的完整迁移，仅新增 `eslint.config.*`。如果项目同时存在两套配置，需告知用户手动删除旧配置文件，避免配置冲突。
 
 #### Monorepo/工作区（必须特别处理）
 
@@ -79,7 +84,7 @@ pnpm add -D eslint @zjutjh/eslint-config@latest
 如果你选了 `eslint.config.ts`，额外装：
 
 - `typescript`
-- `jiti`（Node 版本未知或 `<24` 时建议装上；Node `>=24` 可不装）
+- `jiti`：Node 版本判断顺序——先读 `package.json#engines.node`，再看 `.nvmrc` / `.node-version`，若均无法确定则保守地装上；明确 Node `>=24` 时可跳过。
 
 然后根据你识别出来的技术栈，依赖当前项目的能力“按需自动安装”可选依赖：
 
@@ -156,6 +161,8 @@ export default zjutjh({
 
 ### 6) VSCode（或类似 IDE）配置
 
+> 如果用户使用 WebStorm、Neovim 等其他 IDE，可跳过本步骤，或按对应 IDE 的 ESLint 插件文档配置。
+
 提醒：先在命令行跑一遍 `lint`，确保依赖已补齐，再配置编辑器插件。
 
 在 `.vscode/settings.json` 里只做必要配置：
@@ -163,9 +170,10 @@ export default zjutjh({
 ```jsonc
 {
   "eslint.validate": [
+    "javascript",
     "typescript",
     "vue"
-    // React 项目再加："typescriptreact"
+    // React 项目再加："javascriptreact", "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
@@ -177,10 +185,17 @@ export default zjutjh({
 
 ### 7) 验证与收尾
 
-执行：
+按步骤 1 识别出的包管理器执行：
 
 ```bash
+# pnpm
 pnpm run lint
+# npm
+npm run lint
+# yarn
+yarn lint
+# bun
+bun run lint
 ```
 
 首次接入时 ESLint 可能会触发交互式安装（补齐可选 peer deps）。按提示安装完成后，再跑一次 `lint` 直至干净。
