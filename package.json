@@ -8,7 +8,7 @@
   "description": "ESLint config used by zjutjh",
   "scripts": {
     "build": "tsdown",
-    "lint": "eslint .",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "dev": "config-inspector",
     "release": "bumpp && pnpm publish --access public",

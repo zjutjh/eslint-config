@@ -4,6 +4,19 @@ zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 等项目。
 
 ## 使用方式
 
+> [!TIP]
+> **For Agent**：可以通过 Skill 来接入
+> 
+> ```sh
+> # 推荐安装到项目本地。
+> npx skills add zjutjh/eslint-config --skill setup-zjutjh-eslint
+> ```
+> 安装完成后，在对话里提及接入 zjutjh eslint config 即可触发
+
+---
+
+**For Human**
+
 > [!IMPORTANT]
 > ESLint 版本需要 ^10.0.0 以上，Node 版本需要 ^20.19.0 以上
 
