@@ -50,7 +50,7 @@
    pnpm add -D eslint@^10 jiti
    pnpm add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
    # 如果测 React 配置
-   pnpm add -D "@eslint-react/eslint-plugin@^2.13.0"
+   pnpm add -D "@eslint-react/eslint-plugin@^4.2.3"
 
    # 写 eslint.config.ts
    # import zjutjh from "@zjutjh/eslint-config";
@@ -61,7 +61,7 @@
 
 ## 注意事项
 
-- `taze` 默认只升级在当前 semver range 内的版本。对 `@eslint-react/eslint-plugin` 这种有大版本跨越的插件，major 升级需要手动评估（v4 合并了原来分开的 `@eslint-react/dom` 等子插件，需要同步修改 `src/configs/react.ts`）。
+- `taze` 默认只升级在当前 semver range 内的版本。对 `@eslint-react/eslint-plugin` 这种有大版本跨越的插件，major 升级需要手动评估。v4 已经合并了原本分散的 `@eslint-react/dom`/`hooks-extra`/`rsc`/`web-api` 子插件到单个 `@eslint-react`，同时移除了 `no-leaked-conditional-rendering` 等规则，`src/configs/react.ts` 需要配套调整。
 - 升级后先 `pnpm build` 再 `pnpm lint`、`pnpm typecheck`，构建失败通常意味着 peer dep 版本冲突或 API 变更。
 - 测试产物后记得清理：删除 `zjutjh-eslint-config-*.tgz` 以及 `/tmp` 下的测试项目目录。
 - peer dep 的版本范围写在 `package.json` 的 `peerDependencies` 里，也需要人工同步 catalogs 里的新版本号。
