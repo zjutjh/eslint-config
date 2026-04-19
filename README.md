@@ -1,4 +1,8 @@
-# `@zjutjh/eslint-config` [![npm-version](https://img.shields.io/npm/v/%40zjutjh%2Feslint-config)](https://www.npmjs.com/package/@zjutjh/eslint-config)
+# `@zjutjh/eslint-config`
+
+[![Open on npmx.dev](https://npmx.dev/api/registry/badge/license/@zjutjh/eslint-config?labelColor=000000&color=000000)](https://npmx.dev/package/@zjutjh/eslint-config)
+[![Open on npmx.dev](https://npmx.dev/api/registry/badge/version/@zjutjh/eslint-config?labelColor=000000&color=000000)](https://npmx.dev/package/@zjutjh/eslint-config)
+[![Open on npmx.dev](https://npmx.dev/api/registry/badge/size/@zjutjh/eslint-config?labelColor=000000&color=000000)](https://npmx.dev/package/@zjutjh/eslint-config)
 
 zjutjh 的 ESLint 配置，适用于 JS, TS, Vue3 等项目。
 
