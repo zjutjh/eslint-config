@@ -1,6 +1,6 @@
 import { ParserOptions } from "@typescript-eslint/parser";
 import { Linter } from "eslint";
-import { Options as PrettierOptions } from "prettier";
+import type { FormatOptions as OxfmtFormatOptions } from "oxfmt";
 
 export interface OverridesConfigs {
   vue?: Linter.RulesRecord,
@@ -15,7 +15,7 @@ export interface OptionsConfig extends OptionsComponentExts {
   taro?: boolean;
   jsx?: boolean;
   react?: boolean;
-  prettier?: boolean | OptionsPrettier;
+  oxfmt?: boolean | OptionsOxfmt;
   ignores?: string[];
   overrides?: OverridesConfigs;
 };
@@ -37,9 +37,10 @@ export interface OptionsTypeScriptParserOptions {
   parserOptions?: Partial<ParserOptions>
 }
 
-export interface OptionsPrettier {
-  prettierSelfOptions?: PrettierOptions
-  /** 对哪些文件启用 prettier，默认全部启用 */
+export interface OptionsOxfmt {
+  /** 传递给 oxfmt format() API 的选项，参考 https://oxc.rs/docs/guide/usage/formatter */
+  oxfmtSelfOptions?: OxfmtFormatOptions
+  /** 对哪些文件启用 oxfmt，默认全部启用 */
   lang?: {
     /** js, ts, vue 文件 */
     es: boolean,

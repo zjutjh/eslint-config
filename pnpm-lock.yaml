@@ -12,9 +12,6 @@ catalogs:
     lint-staged:
       specifier: ^16.4.0
       version: 16.4.0
-    prettier:
-      specifier: ^3.8.3
-      version: 3.8.3
   dev:
     '@eslint/config-inspector':
       specifier: ^2.0.0
@@ -58,15 +55,9 @@ catalogs:
     '@typescript-eslint/parser':
       specifier: ^8.58.2
       version: 8.58.2
-    eslint-config-prettier:
-      specifier: ^10.1.8
-      version: 10.1.8
     eslint-plugin-format:
       specifier: ^2.0.1
       version: 2.0.1
-    eslint-plugin-prettier:
-      specifier: ^5.5.5
-      version: 5.5.5
     eslint-plugin-react-hooks:
       specifier: ^7.1.1
       version: 7.1.1
@@ -76,6 +67,9 @@ catalogs:
     eslint-plugin-vue:
       specifier: ^10.8.0
       version: 10.8.0
+    oxfmt:
+      specifier: ^0.35.0
+      version: 0.35.0
     vue-eslint-parser:
       specifier: ^10.4.0
       version: 10.4.0
@@ -162,15 +156,9 @@ importers:
       eslint:
         specifier: catalog:binary
         version: 10.2.1(jiti@2.6.1)
-      eslint-config-prettier:
-        specifier: catalog:optional
-        version: 10.1.8(eslint@10.2.1(jiti@2.6.1))
       eslint-plugin-format:
         specifier: catalog:optional
         version: 2.0.1(eslint@10.2.1(jiti@2.6.1))
-      eslint-plugin-prettier:
-        specifier: catalog:optional
-        version: 5.5.5(eslint-config-prettier@10.1.8(eslint@10.2.1(jiti@2.6.1)))(eslint@10.2.1(jiti@2.6.1))(prettier@3.8.3)
       eslint-plugin-react-hooks:
         specifier: catalog:optional
         version: 7.1.1(eslint@10.2.1(jiti@2.6.1))
@@ -183,9 +171,9 @@ importers:
       lint-staged:
         specifier: catalog:binary
         version: 16.4.0
-      prettier:
-        specifier: catalog:binary
-        version: 3.8.3
+      oxfmt:
+        specifier: catalog:optional
+        version: 0.35.0
       simple-git-hooks:
         specifier: catalog:infra
         version: 2.13.1
@@ -1546,12 +1534,6 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-config-prettier@10.1.8:
-    resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-
   eslint-formatting-reporter@0.0.0:
     resolution: {integrity: sha512-k9RdyTqxqN/wNYVaTk/ds5B5rA8lgoAmvceYN7bcZMBwU7TuXx5ntewJv81eF3pIL/CiJE+pJZm36llG8yhyyw==}
     peerDependencies:
@@ -1585,20 +1567,6 @@ packages:
       '@typescript-eslint/utils':
         optional: true
       eslint-import-resolver-node:
-        optional: true
-
-  eslint-plugin-prettier@5.5.5:
-    resolution: {integrity: sha512-hscXkbqUZ2sPithAuLm5MXL+Wph+U7wHngPBv9OMWwlP8iaflyxpjTYZkmdgB4/vPIhemRlBEoLrH7UC1n7aUw==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      '@types/eslint': '>=8.0.0'
-      eslint: '>=8.0.0'
-      eslint-config-prettier: '>= 7.0.0 <10.0.0 || >=10.1.0'
-      prettier: '>=3.0.0'
-    peerDependenciesMeta:
-      '@types/eslint':
-        optional: true
-      eslint-config-prettier:
         optional: true
 
   eslint-plugin-react-dom@4.2.3:
@@ -3661,10 +3629,6 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-prettier@10.1.8(eslint@10.2.1(jiti@2.6.1)):
-    dependencies:
-      eslint: 10.2.1(jiti@2.6.1)
-
   eslint-formatting-reporter@0.0.0(eslint@10.2.1(jiti@2.6.1)):
     dependencies:
       eslint: 10.2.1(jiti@2.6.1)
@@ -3709,15 +3673,6 @@ snapshots:
       '@typescript-eslint/utils': 8.58.2(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3)
     transitivePeerDependencies:
       - supports-color
-
-  eslint-plugin-prettier@5.5.5(eslint-config-prettier@10.1.8(eslint@10.2.1(jiti@2.6.1)))(eslint@10.2.1(jiti@2.6.1))(prettier@3.8.3):
-    dependencies:
-      eslint: 10.2.1(jiti@2.6.1)
-      prettier: 3.8.3
-      prettier-linter-helpers: 1.0.1
-      synckit: 0.11.12
-    optionalDependencies:
-      eslint-config-prettier: 10.1.8(eslint@10.2.1(jiti@2.6.1))
 
   eslint-plugin-react-dom@4.2.3(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3):
     dependencies:
