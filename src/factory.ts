@@ -26,13 +26,14 @@ export default async function zjutjh(
     jsx: enableJSX = isPackageExists("react"),
     react: enableReact = isPackageExists("react"),
     ignores: userIgnores,
+    gitignore: enableGitignore = false,
     oxfmt: enableOxfmt = false
   } = options;
 
   const configs: Linter.Config[][] = [];
 
   configs.push(
-    ignores({ userIgnores }),
+    ignores({ userIgnores, gitignore: enableGitignore }),
     javascript(),
     imports(),
     stylistic({

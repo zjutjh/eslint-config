@@ -23,6 +23,9 @@ catalogs:
     '@clack/prompts':
       specifier: ^1.2.0
       version: 1.2.0
+    '@eslint/compat':
+      specifier: ^2.0.5
+      version: 2.0.5
     globals:
       specifier: ^17.5.0
       version: 17.5.0
@@ -107,6 +110,9 @@ importers:
       '@clack/prompts':
         specifier: catalog:helper
         version: 1.2.0
+      '@eslint/compat':
+        specifier: catalog:helper
+        version: 2.0.5(eslint@10.2.1(jiti@2.6.1))
       '@eslint/js':
         specifier: catalog:required
         version: 10.0.1(eslint@10.2.1(jiti@2.6.1))
@@ -754,6 +760,15 @@ packages:
     peerDependencies:
       eslint: ^10.0.0
       typescript: '*'
+
+  '@eslint/compat@2.0.5':
+    resolution: {integrity: sha512-IbHDbHJfkVNv6xjlET8AIVo/K1NQt7YT4Rp6ok/clyBGcpRx1l6gv0Rq3vBvYfPJIZt6ODf66Zq08FJNDpnzgg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+    peerDependencies:
+      eslint: ^8.40 || 9 || 10
+    peerDependenciesMeta:
+      eslint:
+        optional: true
 
   '@eslint/config-array@0.23.5':
     resolution: {integrity: sha512-Y3kKLvC1dvTOT+oGlqNQ1XLqK6D1HU2YXPc52NmAlJZbMMWDzGYXMiPRJ8TYD39muD/OTjlZmNJ4ib7dvSrMBA==}
@@ -2942,6 +2957,12 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
+
+  '@eslint/compat@2.0.5(eslint@10.2.1(jiti@2.6.1))':
+    dependencies:
+      '@eslint/core': 1.2.1
+    optionalDependencies:
+      eslint: 10.2.1(jiti@2.6.1)
 
   '@eslint/config-array@0.23.5':
     dependencies:

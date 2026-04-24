@@ -17,6 +17,7 @@ export interface OptionsConfig extends OptionsComponentExts {
   react?: boolean;
   oxfmt?: boolean | OptionsOxfmt;
   ignores?: string[];
+  gitignore?: boolean | string;
   overrides?: OverridesConfigs;
 };
 
@@ -54,4 +55,5 @@ export interface OptionsOxfmt {
 
 export interface OptionsIgnores {
   userIgnores?: string[]
+  gitignore?: boolean | string
 }

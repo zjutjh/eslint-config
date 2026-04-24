@@ -104,7 +104,10 @@ export default zjutjh({
   },
   ignores: [
     "**/build"
-  ]
+  ],
+  // 默认关闭。设为 true 自动读取项目根目录下的 .gitignore（不存在则跳过）
+  // 也可传入 string 指定其他 gitignore 文件路径
+  // gitignore: true
 })
 ```
 
