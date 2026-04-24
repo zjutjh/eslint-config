@@ -81,6 +81,7 @@
   "dependencies": {
     "@antfu/install-pkg": "catalog:helper",
     "@clack/prompts": "catalog:helper",
+    "@eslint/compat": "catalog:helper",
     "@eslint/js": "catalog:required",
     "@stylistic/eslint-plugin": "catalog:required",
     "eslint-plugin-import-x": "catalog:required",
