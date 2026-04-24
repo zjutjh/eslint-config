@@ -1,14 +1,14 @@
 import { Linter } from "eslint";
-import { Options as PrettierOptions } from "prettier";
+import type { FormatOptions as OxfmtFormatOptions } from "oxfmt";
 
 import { GLOB_CSS, GLOB_HTML, GLOB_JS, GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_JSX, GLOB_LESS, GLOB_SCSS, GLOB_TS, GLOB_TSX, GLOB_VUE } from "../globs";
-import { OptionsPrettier } from "../types";
+import { OptionsOxfmt } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
 /**
- * @see https://prettier.io/docs/options
+ * @see https://oxc.rs/docs/guide/usage/formatter
  */
-const prettierOptions: PrettierOptions = {
+const oxfmtOptions: OxfmtFormatOptions = {
   printWidth: 100,
   tabWidth: 2,
   useTabs: false,
@@ -20,9 +20,6 @@ const prettierOptions: PrettierOptions = {
   bracketSpacing: true,
   bracketSameLine: false,
   arrowParens: "always",
-  requirePragma: false,
-  insertPragma: false,
-  proseWrap: "preserve",
   htmlWhitespaceSensitivity: "css",
   vueIndentScriptAndStyle: false,
   endOfLine: "lf",
@@ -30,20 +27,12 @@ const prettierOptions: PrettierOptions = {
   singleAttributePerLine: false
 };
 
-export default async function prettier(
-  options?: OptionsPrettier
+export default async function oxfmt(
+  options?: OptionsOxfmt
 ): Promise<Linter.Config[]> {
-  await ensurePackages([
-    "eslint-plugin-format",
-    "eslint-plugin-prettier",
-    "eslint-config-prettier",
-    "prettier"
-  ]);
+  await ensurePackages(["eslint-plugin-format", "oxfmt"]);
 
-  const [configPrettier, pluginFormat] = await Promise.all([
-    interopDefault(import("eslint-plugin-prettier/recommended")),
-    interopDefault(import("eslint-plugin-format"))
-  ] as const);
+  const pluginFormat = await interopDefault(import("eslint-plugin-format"));
 
   const {
     es: enableESFormat = true,
@@ -52,26 +41,24 @@ export default async function prettier(
     json: enableJSONFormat = true
   } = options?.lang ?? {};
 
-  const mergedPrettierOptions = {
-    ...prettierOptions,
-    ...options?.prettierSelfOptions
+  const mergedOptions = {
+    ...oxfmtOptions,
+    ...options?.oxfmtSelfOptions
   };
 
   return [
     enableESFormat ? {
-      name: "zjutjh/prettier/setup",
+      name: "zjutjh/oxfmt/es",
       files: [GLOB_VUE, GLOB_TS, GLOB_JS, GLOB_TSX, GLOB_JSX],
-      ...configPrettier
-    } : {},
-    enableESFormat ? {
-      name: "zjutjh/prettier/es",
-      files: [GLOB_VUE, GLOB_TS, GLOB_JS, GLOB_TSX, GLOB_JSX],
+      plugins: {
+        format: pluginFormat
+      },
       rules: {
-        "prettier/prettier": ["error", mergedPrettierOptions]
+        "format/oxfmt": ["error", mergedOptions]
       }
     } : {},
     enableCSSFormat ? {
-      name: "zjutjh/prettier/css",
+      name: "zjutjh/oxfmt/css",
       files: [GLOB_CSS, GLOB_LESS, GLOB_SCSS],
       languageOptions: {
         parser: pluginFormat.parserPlain
@@ -80,11 +67,11 @@ export default async function prettier(
         format: pluginFormat
       },
       rules: {
-        "format/prettier": ["error", { parser: "css", mergedPrettierOptions }]
+        "format/oxfmt": ["error", mergedOptions]
       }
     } : {},
     enableHTMLFormat ? {
-      name: "zjutjh/prettier/html",
+      name: "zjutjh/oxfmt/html",
       files: [GLOB_HTML],
       languageOptions: {
         parser: pluginFormat.parserPlain
@@ -93,11 +80,11 @@ export default async function prettier(
         format: pluginFormat
       },
       rules: {
-        "format/prettier": ["error", { parser: "html", mergedPrettierOptions }]
+        "format/oxfmt": ["error", mergedOptions]
       }
     } : {},
     enableJSONFormat ? {
-      name: "zjutjh/prettier/json",
+      name: "zjutjh/oxfmt/json",
       files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
       languageOptions: {
         parser: pluginFormat.parserPlain
@@ -106,7 +93,7 @@ export default async function prettier(
         format: pluginFormat
       },
       rules: {
-        "format/prettier": ["error", { parser: "json", mergedPrettierOptions }]
+        "format/oxfmt": ["error", mergedOptions]
       }
     } : {}
   ];

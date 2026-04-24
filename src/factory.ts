@@ -6,7 +6,7 @@ import imports from "./configs/imports";
 import javascript from "./configs/javascript";
 import jsx from "./configs/jsx";
 import misc from "./configs/misc";
-import prettier from "./configs/prettier";
+import oxfmt from "./configs/oxfmt";
 import react from "./configs/react";
 import stylistic from "./configs/stylistic";
 import typescript from "./configs/typescript";
@@ -26,7 +26,7 @@ export default async function zjutjh(
     jsx: enableJSX = isPackageExists("react"),
     react: enableReact = isPackageExists("react"),
     ignores: userIgnores,
-    prettier: enablePrettier = false
+    oxfmt: enableOxfmt = false
   } = options;
 
   const configs: Linter.Config[][] = [];
@@ -78,10 +78,10 @@ export default async function zjutjh(
     );
   }
 
-  // 放到最后，eslint-config-prettier 需要覆盖一些冲突的配置
-  const codeStyleOptions = resolveSubOptions(options, "prettier");
-  if (enablePrettier) {
-    configs.push(await prettier(codeStyleOptions));
+  // 放到最后，格式化规则会覆盖一些冲突的风格规则
+  const oxfmtOptions = resolveSubOptions(options, "oxfmt");
+  if (enableOxfmt) {
+    configs.push(await oxfmt(oxfmtOptions));
   }
 
   return configs.flat(1).concat(userConfigs);
