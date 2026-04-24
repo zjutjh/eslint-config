@@ -97,9 +97,6 @@ export default zjutjh({
   overrides: {
     vue: {
       "vue/multi-word-component-names": ["off"]
-    },
-    stylistic: {
-      "stylistic/quotes": ["error", "single"]
     }
   },
   ignores: [
@@ -117,11 +114,6 @@ export default zjutjh({
 export default zjutjh(
   // 第一个参数是 zjutjh 专用的配置
   {
-    overrides: {
-      stylistic: {
-        "stylistic/quotes": ["error", "single"]
-      }
-    },
     ignores: [
       "**/build"
     ]
@@ -151,16 +143,15 @@ export default zjutjh(
 
 ## 代码格式化
 
-很多人在意代码的格式化，这里单独拿出一章讲。
+内置 [oxfmt](https://oxc.rs/docs/guide/usage/formatter) 作为格式化工具，**默认开启**，覆盖 js(x)/ts(x)、
+vue、css/scss/less、html、json/jsonc/json5 等文件。
 
-内置两种格式化工具。`@stylistic/eslint-plugin` (lint 工具对格式的检查) 和传统的 formatter 工具
-([oxfmt](https://oxc.rs/docs/guide/usage/formatter))。stylistic 默认开启，如果要使用 oxfmt，需要手动开启。
+如果不希望由 ESLint 进行格式化（例如团队另有格式化方案），可以关闭：
 
 ```ts
-// 启用 oxfmt
 export default zjutjh({
-  oxfmt: true
-}),
+  oxfmt: false
+})
 ```
 
 支持自定义 oxfmt 格式化选项，以及关闭对部分文件的格式化（默认对支持的文件全部开启）
@@ -179,8 +170,7 @@ export default zjutjh({
 })
 ```
 
-stylistic 只对 js(x) 和 ts(x) 进行格式化，而 oxfmt 还对其他文件，如 vue，css，html，json 等的格式化。
-如果你要**在编辑器中**自动格式化这些文件，需要配置编辑器来允许 eslint 校验这些类型的文件。
+如果你要**在编辑器中**自动格式化非 js/ts 的文件，需要配置编辑器来允许 eslint 校验这些类型的文件。
 
 ```jsonc
 // @filename .vscode/settings.json

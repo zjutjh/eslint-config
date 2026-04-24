@@ -3,7 +3,6 @@ import importXPlugin, { flatConfigs as importXFlatConfigs } from "eslint-plugin-
 import simpleImportSortPlugin from "eslint-plugin-simple-import-sort";
 
 export default function imports(): Linter.Config[] {
-
   return [
     {
       name: "zjutjh/imports/setup",

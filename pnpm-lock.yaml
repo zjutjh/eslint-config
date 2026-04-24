@@ -58,9 +58,6 @@ catalogs:
     '@typescript-eslint/parser':
       specifier: ^8.58.2
       version: 8.58.2
-    eslint-plugin-format:
-      specifier: ^2.0.1
-      version: 2.0.1
     eslint-plugin-react-hooks:
       specifier: ^7.1.1
       version: 7.1.1
@@ -70,9 +67,6 @@ catalogs:
     eslint-plugin-vue:
       specifier: ^10.8.0
       version: 10.8.0
-    oxfmt:
-      specifier: ^0.35.0
-      version: 0.35.0
     vue-eslint-parser:
       specifier: ^10.4.0
       version: 10.4.0
@@ -80,9 +74,9 @@ catalogs:
     '@eslint/js':
       specifier: ^10.0.1
       version: 10.0.1
-    '@stylistic/eslint-plugin':
-      specifier: ^5.10.0
-      version: 5.10.0
+    eslint-plugin-format:
+      specifier: ^2.0.1
+      version: 2.0.1
     eslint-plugin-import-x:
       specifier: ^4.16.2
       version: 4.16.2
@@ -92,6 +86,9 @@ catalogs:
     eslint-plugin-unicorn:
       specifier: ^64.0.0
       version: 64.0.0
+    oxfmt:
+      specifier: ^0.35.0
+      version: 0.35.0
   typing:
     '@eslint/core':
       specifier: ^1.2.1
@@ -116,9 +113,9 @@ importers:
       '@eslint/js':
         specifier: catalog:required
         version: 10.0.1(eslint@10.2.1(jiti@2.6.1))
-      '@stylistic/eslint-plugin':
+      eslint-plugin-format:
         specifier: catalog:required
-        version: 5.10.0(eslint@10.2.1(jiti@2.6.1))
+        version: 2.0.1(eslint@10.2.1(jiti@2.6.1))
       eslint-plugin-import-x:
         specifier: catalog:required
         version: 4.16.2(@typescript-eslint/utils@8.58.2(eslint@10.2.1(jiti@2.6.1))(typescript@6.0.3))(eslint@10.2.1(jiti@2.6.1))
@@ -134,6 +131,9 @@ importers:
       local-pkg:
         specifier: catalog:helper
         version: 1.1.2
+      oxfmt:
+        specifier: catalog:required
+        version: 0.35.0
     devDependencies:
       '@eslint-react/eslint-plugin':
         specifier: catalog:optional
@@ -162,9 +162,6 @@ importers:
       eslint:
         specifier: catalog:binary
         version: 10.2.1(jiti@2.6.1)
-      eslint-plugin-format:
-        specifier: catalog:optional
-        version: 2.0.1(eslint@10.2.1(jiti@2.6.1))
       eslint-plugin-react-hooks:
         specifier: catalog:optional
         version: 7.1.1(eslint@10.2.1(jiti@2.6.1))
@@ -177,9 +174,6 @@ importers:
       lint-staged:
         specifier: catalog:binary
         version: 16.4.0
-      oxfmt:
-        specifier: catalog:optional
-        version: 0.35.0
       simple-git-hooks:
         specifier: catalog:infra
         version: 2.13.1
@@ -3179,6 +3173,7 @@ snapshots:
       espree: 10.4.0
       estraverse: 5.3.0
       picomatch: 4.0.3
+    optional: true
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
