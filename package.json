@@ -84,6 +84,7 @@
     "@eslint/compat": "catalog:helper",
     "@eslint/js": "catalog:required",
     "@stylistic/eslint-plugin": "catalog:required",
+    "eslint-import-resolver-next": "catalog:helper",
     "eslint-plugin-import-x": "catalog:required",
     "eslint-plugin-simple-import-sort": "catalog:required",
     "eslint-plugin-unicorn": "catalog:required",

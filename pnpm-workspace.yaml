@@ -8,6 +8,7 @@ catalogs:
     "@antfu/install-pkg": "^1.1.0"
     "@clack/prompts": "^1.2.0"
     "@eslint/compat": "^2.0.5"
+    "eslint-import-resolver-next": "^0.6.0"
     "globals": "^17.5.0"
     "local-pkg": "^1.1.2"
   infra:
