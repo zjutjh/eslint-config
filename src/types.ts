@@ -49,6 +49,8 @@ export interface OptionsOxfmt {
     html: boolean;
     /** json, json5, jsonc 文件 */
     json: boolean;
+    /** yaml, yml 文件 */
+    yaml: boolean;
   };
 }
 

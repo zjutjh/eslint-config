@@ -15,6 +15,8 @@ export const GLOB_JSON = "**/*.json";
 export const GLOB_JSON5 = "**/*.json5";
 export const GLOB_JSONC = "**/*.jsonc";
 
+export const GLOB_YAML = "**/*.y?(a)ml";
+
 /**
  * @see https://github.com/antfu/eslint-config/blob/04ae86dd43e86d8b925555d85adf080494efeab3/src/globs.ts#L56
  */

@@ -14,7 +14,8 @@ import {
   GLOB_SCSS,
   GLOB_TS,
   GLOB_TSX,
-  GLOB_VUE
+  GLOB_VUE,
+  GLOB_YAML
 } from "../globs";
 import { OptionsOxfmt } from "../types";
 
@@ -45,7 +46,8 @@ export default function oxfmt(options?: OptionsOxfmt): Linter.Config[] {
     es: enableESFormat = true,
     html: enableHTMLFormat = true,
     css: enableCSSFormat = true,
-    json: enableJSONFormat = true
+    json: enableJSONFormat = true,
+    yaml: enableYAMLFormat = true
   } = options?.lang ?? {};
 
   const mergedOptions = {
@@ -100,6 +102,21 @@ export default function oxfmt(options?: OptionsOxfmt): Linter.Config[] {
       ? {
           name: "zjutjh/oxfmt/json",
           files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
+          languageOptions: {
+            parser: pluginFormat.parserPlain
+          },
+          plugins: {
+            format: pluginFormat
+          },
+          rules: {
+            "format/oxfmt": ["error", mergedOptions]
+          }
+        }
+      : {},
+    enableYAMLFormat
+      ? {
+          name: "zjutjh/oxfmt/yaml",
+          files: [GLOB_YAML],
           languageOptions: {
             parser: pluginFormat.parserPlain
           },

@@ -35,6 +35,7 @@
     "@clack/prompts": "catalog:helper",
     "@eslint/compat": "catalog:helper",
     "@eslint/js": "catalog:required",
+    "eslint-import-resolver-next": "catalog:helper",
     "eslint-plugin-format": "catalog:required",
     "eslint-plugin-import-x": "catalog:required",
     "eslint-plugin-simple-import-sort": "catalog:required",

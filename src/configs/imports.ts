@@ -1,4 +1,5 @@
 import { Linter } from "eslint";
+import { createNextImportResolver } from "eslint-import-resolver-next";
 import importXPlugin, { flatConfigs as importXFlatConfigs } from "eslint-plugin-import-x";
 import simpleImportSortPlugin from "eslint-plugin-simple-import-sort";
 
@@ -9,6 +10,9 @@ export default function imports(): Linter.Config[] {
       plugins: {
         "simple-import-sort": simpleImportSortPlugin,
         "import-x": importXPlugin
+      },
+      settings: {
+        "import-x/resolver-next": [createNextImportResolver()]
       }
     },
     {
