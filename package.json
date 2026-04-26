@@ -1,6 +1,6 @@
 {
   "name": "@zjutjh/eslint-config",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "description": "ESLint config used by zjutjh",
   "license": "ISC",
   "author": "zjutjh",

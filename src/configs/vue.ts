@@ -58,6 +58,7 @@ export default async function vue(
         "vue/prefer-true-attribute-shorthand": ["warn", options?.taro ? "never" : "always"],
         "vue/singleline-html-element-content-newline": "off",
         "vue/html-self-closing": "off",
+        "vue/max-attributes-per-line": "off",
 
         ...options?.overrides
       }
