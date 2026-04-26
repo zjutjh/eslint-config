@@ -1,7 +1,7 @@
 import { Linter } from "eslint";
 import type { FormatOptions as OxfmtFormatOptions } from "oxfmt";
 
-import { GLOB_CSS, GLOB_HTML, GLOB_JS, GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_JSX, GLOB_LESS, GLOB_SCSS, GLOB_TS, GLOB_TSX, GLOB_VUE } from "../globs";
+import { GLOB_CSS, GLOB_HTML, GLOB_JS, GLOB_JSON, GLOB_JSON5, GLOB_JSONC, GLOB_JSX, GLOB_LESS, GLOB_SCSS, GLOB_TS, GLOB_TSX, GLOB_VUE, GLOB_YAML } from "../globs";
 import { OptionsOxfmt } from "../types";
 import { ensurePackages, interopDefault } from "../utils";
 
@@ -38,7 +38,8 @@ export default async function oxfmt(
     es: enableESFormat = true,
     html: enableHTMLFormat = true,
     css: enableCSSFormat = true,
-    json: enableJSONFormat = true
+    json: enableJSONFormat = true,
+    yaml: enableYAMLFormat = true
   } = options?.lang ?? {};
 
   const mergedOptions = {
@@ -86,6 +87,19 @@ export default async function oxfmt(
     enableJSONFormat ? {
       name: "zjutjh/oxfmt/json",
       files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
+      languageOptions: {
+        parser: pluginFormat.parserPlain
+      },
+      plugins: {
+        format: pluginFormat
+      },
+      rules: {
+        "format/oxfmt": ["error", mergedOptions]
+      }
+    } : {},
+    enableYAMLFormat ? {
+      name: "zjutjh/oxfmt/yaml",
+      files: [GLOB_YAML],
       languageOptions: {
         parser: pluginFormat.parserPlain
       },
