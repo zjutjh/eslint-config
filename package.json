@@ -1,11 +1,26 @@
 {
   "name": "@zjutjh/eslint-config",
-  "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0-beta.4",
+  "description": "ESLint config used by zjutjh",
   "license": "ISC",
   "author": "zjutjh",
-  "packageManager": "pnpm@10.33.0",
-  "description": "ESLint config used by zjutjh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zjutjh/eslint-config.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsdown",
     "lint": "eslint",
@@ -15,38 +30,47 @@
     "prepublish": "pnpm build",
     "postinstall": "npx simple-git-hooks"
   },
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.mts"
-    }
+  "dependencies": {
+    "@antfu/install-pkg": "catalog:helper",
+    "@clack/prompts": "catalog:helper",
+    "@eslint/compat": "catalog:helper",
+    "@eslint/js": "catalog:required",
+    "eslint-import-resolver-next": "catalog:helper",
+    "eslint-plugin-format": "catalog:required",
+    "eslint-plugin-import-x": "catalog:required",
+    "eslint-plugin-simple-import-sort": "catalog:required",
+    "eslint-plugin-unicorn": "catalog:required",
+    "globals": "catalog:helper",
+    "local-pkg": "catalog:helper",
+    "oxfmt": "catalog:required"
   },
-  "engines": {
-    "node": ">=24"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zjutjh/eslint-config.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+  "devDependencies": {
+    "@eslint-react/eslint-plugin": "catalog:optional",
+    "@eslint/config-inspector": "catalog:dev",
+    "@eslint/core": "catalog:typing",
+    "@types/node": "catalog:typing",
+    "@typescript-eslint/eslint-plugin": "catalog:optional",
+    "@typescript-eslint/parser": "catalog:optional",
+    "bumpp": "catalog:infra",
+    "cspell": "catalog:infra",
+    "eslint": "catalog:binary",
+    "eslint-plugin-react-hooks": "catalog:optional",
+    "eslint-plugin-react-refresh": "catalog:optional",
+    "eslint-plugin-vue": "catalog:optional",
+    "lint-staged": "catalog:binary",
+    "simple-git-hooks": "catalog:infra",
+    "tsdown": "catalog:infra",
+    "typescript": "catalog:infra",
+    "vue-eslint-parser": "catalog:optional"
   },
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "catalog:optional",
     "@typescript-eslint/eslint-plugin": "catalog:optional",
     "@typescript-eslint/parser": "catalog:optional",
     "eslint": "catalog:binary",
-    "eslint-plugin-format": "catalog:optional",
     "eslint-plugin-react-hooks": "catalog:optional",
     "eslint-plugin-react-refresh": "catalog:optional",
     "eslint-plugin-vue": "catalog:optional",
-    "oxfmt": "catalog:optional",
     "vue-eslint-parser": "catalog:optional"
   },
   "peerDependenciesMeta": {
@@ -59,9 +83,6 @@
     "@typescript-eslint/parser": {
       "optional": true
     },
-    "eslint-plugin-format": {
-      "optional": true
-    },
     "eslint-plugin-react-hooks": {
       "optional": true
     },
@@ -71,45 +92,15 @@
     "eslint-plugin-vue": {
       "optional": true
     },
-    "oxfmt": {
-      "optional": true
-    },
     "vue-eslint-parser": {
       "optional": true
     }
   },
-  "dependencies": {
-    "@antfu/install-pkg": "catalog:helper",
-    "@clack/prompts": "catalog:helper",
-    "@eslint/compat": "catalog:helper",
-    "@eslint/js": "catalog:required",
-    "@stylistic/eslint-plugin": "catalog:required",
-    "eslint-import-resolver-next": "catalog:helper",
-    "eslint-plugin-import-x": "catalog:required",
-    "eslint-plugin-simple-import-sort": "catalog:required",
-    "eslint-plugin-unicorn": "catalog:required",
-    "globals": "catalog:helper",
-    "local-pkg": "catalog:helper"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
   },
-  "devDependencies": {
-    "@eslint-react/eslint-plugin": "catalog:optional",
-    "@eslint/config-inspector": "catalog:dev",
-    "@eslint/core": "catalog:typing",
-    "@types/node": "catalog:typing",
-    "@typescript-eslint/eslint-plugin": "catalog:optional",
-    "@typescript-eslint/parser": "catalog:optional",
-    "bumpp": "catalog:infra",
-    "cspell": "catalog:infra",
-    "eslint": "catalog:binary",
-    "eslint-plugin-format": "catalog:optional",
-    "eslint-plugin-react-hooks": "catalog:optional",
-    "eslint-plugin-react-refresh": "catalog:optional",
-    "eslint-plugin-vue": "catalog:optional",
-    "lint-staged": "catalog:binary",
-    "oxfmt": "catalog:optional",
-    "simple-git-hooks": "catalog:infra",
-    "tsdown": "catalog:infra",
-    "typescript": "catalog:infra",
-    "vue-eslint-parser": "catalog:optional"
-  }
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.33.0"
 }

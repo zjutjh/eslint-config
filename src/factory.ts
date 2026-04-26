@@ -8,7 +8,6 @@ import jsx from "./configs/jsx";
 import misc from "./configs/misc";
 import oxfmt from "./configs/oxfmt";
 import react from "./configs/react";
-import stylistic from "./configs/stylistic";
 import typescript from "./configs/typescript";
 import vue from "./configs/vue";
 import { OptionsConfig } from "./types";
@@ -27,7 +26,7 @@ export default async function zjutjh(
     react: enableReact = isPackageExists("react"),
     ignores: userIgnores,
     gitignore: enableGitignore = false,
-    oxfmt: enableOxfmt = false
+    oxfmt: enableOxfmt = true
   } = options;
 
   const configs: Linter.Config[][] = [];
@@ -36,9 +35,6 @@ export default async function zjutjh(
     ignores({ userIgnores, gitignore: enableGitignore }),
     javascript(),
     imports(),
-    stylistic({
-      overrides: getOverrides(options, "stylistic")
-    }),
     misc()
   );
 
@@ -79,10 +75,9 @@ export default async function zjutjh(
     );
   }
 
-  // 放到最后，格式化规则会覆盖一些冲突的风格规则
   const oxfmtOptions = resolveSubOptions(options, "oxfmt");
   if (enableOxfmt) {
-    configs.push(await oxfmt(oxfmtOptions));
+    configs.push(oxfmt(oxfmtOptions));
   }
 
   return configs.flat(1).concat(userConfigs);

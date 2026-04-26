@@ -30,13 +30,5 @@
   "[html]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "eslint.validate": [
-    "vue",
-    "typescript",
-    "css",
-    "less",
-    "scss",
-    "json",
-    "html"
-  ]
+  "eslint.validate": ["vue", "typescript", "css", "less", "scss", "json", "html"]
 }

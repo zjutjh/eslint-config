@@ -3,7 +3,6 @@ import { Linter } from "eslint";
 import globals from "globals";
 
 export default function javascript(): Linter.Config[] {
-
   return [
     {
       name: "zjutjh/javascript/setup",
@@ -34,15 +33,15 @@ export default function javascript(): Linter.Config[] {
       name: "zjutjh/javascript/rules",
       rules: {
         ...eslintJS.configs.recommended.rules,
-        "camelcase": "warn",
+        camelcase: "warn",
         "no-warning-comments": "warn",
-        "no-console": ["warn", { allow: [ "warn", "error", "info" ] }],
+        "no-console": ["warn", { allow: ["warn", "error", "info"] }],
         "no-var": "error",
         "no-undef": "off",
         "prefer-const": "warn",
         "arrow-body-style": "error",
         "no-nested-ternary": "error",
-        "curly": "error",
+        curly: "error",
         "no-else-return": "error",
         "no-implicit-coercion": "error",
         "no-useless-concat": "error",
