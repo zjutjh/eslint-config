@@ -7,15 +7,9 @@ import { ensurePackages, interopDefault } from "../utils";
 export default async function vue(
   options?: OptionsVue & OptionsOverrides
 ): Promise<Linter.Config[]> {
-  await ensurePackages([
-    "eslint-plugin-vue",
-    "vue-eslint-parser"
-  ]);
+  await ensurePackages(["eslint-plugin-vue", "vue-eslint-parser"]);
 
-  const [
-    pluginVue,
-    parserVue
-  ] = await Promise.all([
+  const [pluginVue, parserVue] = await Promise.all([
     interopDefault(import("eslint-plugin-vue")),
     interopDefault(import("vue-eslint-parser"))
   ] as const);
@@ -37,25 +31,34 @@ export default async function vue(
             jsx: true
           },
           extraFileExtensions: [".vue"],
-          parser: options?.ts
-            ? await interopDefault(import("@typescript-eslint/parser"))
-            : null,
+          parser: options?.ts ? await interopDefault(import("@typescript-eslint/parser")) : null,
           sourceType: "module"
         }
       },
       processor: pluginVue.processors[".vue"],
       rules: {
-        ...pluginVue.configs["flat/recommended"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
-        ...pluginVue.configs["flat/essential"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
-        ...pluginVue.configs["flat/strongly-recommended"].map(c => c.rules).reduce((prev, curr) => ({ ...prev, ...curr }), {}),
+        ...pluginVue.configs["flat/recommended"]
+          .map((c) => c.rules)
+          .reduce((prev, curr) => ({ ...prev, ...curr }), {}),
+        ...pluginVue.configs["flat/essential"]
+          .map((c) => c.rules)
+          .reduce((prev, curr) => ({ ...prev, ...curr }), {}),
+        ...pluginVue.configs["flat/strongly-recommended"]
+          .map((c) => c.rules)
+          .reduce((prev, curr) => ({ ...prev, ...curr }), {}),
 
         "no-useless-assignment": "off",
 
         "vue/multi-word-component-names": ["warn", { ignores: ["index"] }],
-        "vue/component-name-in-template-casing": ["error", "kebab-case", { "registeredComponentsOnly": true }],
+        "vue/component-name-in-template-casing": [
+          "error",
+          "kebab-case",
+          { registeredComponentsOnly: true }
+        ],
         "vue/prefer-true-attribute-shorthand": ["warn", options?.taro ? "never" : "always"],
         "vue/singleline-html-element-content-newline": "off",
         "vue/html-self-closing": "off",
+        "vue/max-attributes-per-line": "off",
 
         ...options?.overrides
       }

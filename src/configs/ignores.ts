@@ -13,10 +13,7 @@ export default function ignores(options?: OptionsIgnores): Linter.Config[] {
   const configs: Linter.Config[] = [
     {
       name: "zjutjh/ignores",
-      ignores: [
-        ...GLOBS_EXCLUDES,
-        ...options?.userIgnores ?? []
-      ]
+      ignores: [...GLOBS_EXCLUDES, ...(options?.userIgnores ?? [])]
     }
   ];
 

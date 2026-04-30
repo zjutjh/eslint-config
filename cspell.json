@@ -1,14 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "language": "en",
-  "dictionaries": [
-    "typescript",
-    "node",
-    "html",
-    "css",
-    "bash",
-    "npm"
-  ],
+  "dictionaries": ["typescript", "node", "html", "css", "bash", "npm"],
   "words": [
     "bumpp",
     "dbaeumer",
@@ -23,9 +16,5 @@
     "vueuse",
     "zjutjh"
   ],
-  "ignorePaths": [
-    "node_modules/**",
-    "pnpm-lock.yaml",
-    "**/dist/**"
-  ]
+  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "**/dist/**"]
 }

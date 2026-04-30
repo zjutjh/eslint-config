@@ -7,23 +7,13 @@ import { ensurePackages, interopDefault } from "../utils";
 export default async function typescript(
   options: OptionsOverrides & OptionsTypeScriptParserOptions & OptionsComponentExts
 ): Promise<Linter.Config[]> {
-  const {
-    componentExts = [],
-    overrides,
-    parserOptions
-  } = options;
+  const { componentExts = [], overrides, parserOptions } = options;
 
-  const files = [GLOB_TS, GLOB_TSX, ...componentExts.map(ext => `**/*.${ext}`)];
+  const files = [GLOB_TS, GLOB_TSX, ...componentExts.map((ext) => `**/*.${ext}`)];
 
-  await ensurePackages([
-    "@typescript-eslint/eslint-plugin",
-    "@typescript-eslint/parser"
-  ]);
+  await ensurePackages(["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"]);
 
-  const [
-    pluginTs,
-    parserTs
-  ] = await Promise.all([
+  const [pluginTs, parserTs] = await Promise.all([
     await interopDefault(import("@typescript-eslint/eslint-plugin")),
     await interopDefault(import("@typescript-eslint/parser"))
   ] as const);
@@ -66,18 +56,24 @@ export default async function typescript(
             allowArray: false
           }
         ],
-        "@typescript-eslint/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
+        "@typescript-eslint/ban-ts-comment": [
+          "error",
+          { "ts-expect-error": "allow-with-description" }
+        ],
         "@typescript-eslint/require-await": "error",
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-non-null-assertion": "error",
         "@typescript-eslint/no-empty-function": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-unnecessary-condition": "error",
-        "@typescript-eslint/no-unused-expressions": ["error", {
-          allowShortCircuit: true,
-          allowTaggedTemplates: true,
-          allowTernary: true
-        }],
+        "@typescript-eslint/no-unused-expressions": [
+          "error",
+          {
+            allowShortCircuit: true,
+            allowTaggedTemplates: true,
+            allowTernary: true
+          }
+        ],
         "@typescript-eslint/no-unused-vars": [
           "error",
           {

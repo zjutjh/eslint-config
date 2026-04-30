@@ -2,7 +2,6 @@ import { Linter } from "eslint";
 import uniconPlugin from "eslint-plugin-unicorn";
 
 export default function misc(): Linter.Config[] {
-
   return [
     {
       name: "zjutjh/misc/setup",
@@ -16,7 +15,7 @@ export default function misc(): Linter.Config[] {
         "unicorn/filename-case": [
           "error",
           {
-            "case": "kebabCase"
+            case: "kebabCase"
           }
         ]
       }
