@@ -1,0 +1,10 @@
+javascript.js
+  24:1  warn   no-console  Unexpected console statement. Only these console methods are allowed: warn, error, info.
+
+tsx.tsx
+  12:21  error  @eslint-react/rules-of-hooks  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?
+  12:21  error  react-hooks/rules-of-hooks  React Hook "useState" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?
+
+typescript.ts
+  17:8  error  @typescript-eslint/require-await  Async function 'load' has no 'await' expression.
+  23:30  error  @typescript-eslint/no-explicit-any  Unexpected any. Specify a different type.

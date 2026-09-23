@@ -1,0 +1,2 @@
+javascript.js
+  25:1  warn   no-console  Unexpected console statement. Only these console methods are allowed: warn, error, info.

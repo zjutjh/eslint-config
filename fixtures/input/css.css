@@ -1,0 +1,5 @@
+.container{display:flex;justify-content:center}
+.title {
+    color: RED;
+  font-size:16px
+}

@@ -25,6 +25,7 @@
     "build": "tsdown",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "test": "vitest",
     "dev": "config-inspector",
     "release": "bumpp && pnpm publish --access public",
     "prepublish": "pnpm build",
@@ -59,8 +60,11 @@
     "eslint-plugin-vue": "catalog:optional",
     "lint-staged": "catalog:binary",
     "simple-git-hooks": "catalog:infra",
+    "tinyexec": "catalog:dev",
+    "tinyglobby": "catalog:dev",
     "tsdown": "catalog:infra",
     "typescript": "catalog:infra",
+    "vitest": "catalog:dev",
     "vue-eslint-parser": "catalog:optional"
   },
   "peerDependencies": {
