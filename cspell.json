@@ -9,6 +9,7 @@
     "oxfmt",
     "tarojs",
     "taze",
+    "tinyexec",
     "trae",
     "unicon",
     "unplugin",
@@ -16,5 +17,5 @@
     "vueuse",
     "zjutjh"
   ],
-  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "**/dist/**"]
+  "ignorePaths": ["node_modules/**", "pnpm-lock.yaml", "**/dist/**", "fixtures/**"]
 }

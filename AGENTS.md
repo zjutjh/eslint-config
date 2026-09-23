@@ -59,9 +59,24 @@
    pnpm lint
    ```
 
+## 冒烟测试（fixtures）
+
+参考 [antfu/eslint-config](https://github.com/antfu/eslint-config/blob/main/test/fixtures.test.ts) 的做法，用快照测试验证规则改动的实际效果：
+
+- `fixtures/input/`：故意写得不规范的各类源码（js/ts/tsx/jsx/vue/css/html/json/yaml）。
+- `test/fixtures.test.ts`：对每个配置组合（`js`、`ts`、`vue`、`react`、`no-oxfmt`），把 input 复制到 `_fixtures/<name>`，生成直接引用 `src/` 的 `eslint.config.ts`，执行 `eslint . --fix`。
+- `fixtures/output/<name>/`：修复后的文件快照（与 input 相同的文件不会生成快照），以及 `lint-report.txt` 记录修复后仍存在的诊断。出现解析错误或 ESLint 崩溃时测试直接失败。
+
+```sh
+pnpm test --run   # 跑一遍冒烟测试
+pnpm test -u      # 规则变更是预期的，更新快照
+```
+
+改动规则、升级依赖后都跑一下，并在 PR 里 review `fixtures/output` 的 diff，确认行为变化符合预期。新增配置组合时在 `test/fixtures.test.ts` 里加一行 `runWithConfig(...)` 即可。
+
 ## 注意事项
 
 - `taze` 默认只升级在当前 semver range 内的版本。对 `@eslint-react/eslint-plugin` 这种有大版本跨越的插件，major 升级需要手动评估。v4 已经合并了原本分散的 `@eslint-react/dom`/`hooks-extra`/`rsc`/`web-api` 子插件到单个 `@eslint-react`，同时移除了 `no-leaked-conditional-rendering` 等规则，`src/configs/react.ts` 需要配套调整。
-- 升级后先 `pnpm build` 再 `pnpm lint`、`pnpm typecheck`，构建失败通常意味着 peer dep 版本冲突或 API 变更。
+- 升级后先 `pnpm build` 再 `pnpm lint`、`pnpm typecheck`、`pnpm test --run`，构建失败通常意味着 peer dep 版本冲突或 API 变更；快照变化需要逐一确认是否符合预期。
 - 测试产物后记得清理：删除 `zjutjh-eslint-config-*.tgz` 以及 `/tmp` 下的测试项目目录。
 - peer dep 的版本范围写在 `package.json` 的 `peerDependencies` 里，也需要人工同步 catalogs 里的新版本号。

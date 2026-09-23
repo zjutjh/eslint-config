@@ -1,3 +1,3 @@
 import zjutjh from "./src";
 
-export default zjutjh();
+export default zjutjh({ ignores: ["fixtures", "_fixtures"] });

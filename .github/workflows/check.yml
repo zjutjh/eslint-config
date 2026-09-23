@@ -31,6 +31,9 @@ jobs:
       - name: Lint project
         run: pnpm lint
 
+      - name: Fixture smoke test
+        run: pnpm test --run
+
   spellcheck:
     runs-on: ubuntu-latest
     steps:
