@@ -50,7 +50,7 @@
    pnpm add -D eslint@^10 jiti
    pnpm add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
    # 如果测 React 配置
-   pnpm add -D "@eslint-react/eslint-plugin@^4.2.3"
+   pnpm add -D "@eslint-react/eslint-plugin@^5"
 
    # 写 eslint.config.ts
    # import zjutjh from "@zjutjh/eslint-config";
@@ -65,3 +65,4 @@
 - 升级后先 `pnpm build` 再 `pnpm lint`、`pnpm typecheck`，构建失败通常意味着 peer dep 版本冲突或 API 变更。
 - 测试产物后记得清理：删除 `zjutjh-eslint-config-*.tgz` 以及 `/tmp` 下的测试项目目录。
 - peer dep 的版本范围写在 `package.json` 的 `peerDependencies` 里，也需要人工同步 catalogs 里的新版本号。
+- `typescript` 暂时停留在 6.x：`@typescript-eslint/*` 8.x 的 peer 范围是 `typescript <6.1.0`，等 typescript-eslint 支持 TS 7 后再升级。
